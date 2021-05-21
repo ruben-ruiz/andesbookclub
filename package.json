@@ -11,10 +11,27 @@
     "url": "git+https://github.com/Andes-Book-Club/blue-ocean.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Max Tickman, Ruben Ruiz, Dalton Xue, Helen Lee, JoelChrist Abreu, Mark McLindon, Ryan Riegel",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Andes-Book-Club/blue-ocean/issues"
   },
-  "homepage": "https://github.com/Andes-Book-Club/blue-ocean#readme"
+  "homepage": "https://github.com/Andes-Book-Club/blue-ocean#readme",
+  "dependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "body-parser": "^1.19.0",
+    "dotenv": "^9.0.2",
+    "express": "^4.17.1",
+    "node": "^16.1.0",
+    "postgres": "^1.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-google-login": "^5.2.2",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  }
 }
