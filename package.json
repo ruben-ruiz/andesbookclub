@@ -2,7 +2,7 @@
   "name": "blue-ocean",
   "version": "1.0.0",
   "description": "Andes Book Club",
-  "main": "server/index.js",
+  "main": "server.js",
   "scripts": {
     "build": "webpack --mode development --watch",
     "start": "nodemon"

@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 class App extends React.Component {
   render() {
     return (
-      <div>App.jsx</div>
+      <div>Apple.jsx</div>
     );
   }
 }

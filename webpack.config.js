@@ -18,4 +18,9 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+  mode: 'development',
+  devtool: 'source-map',
 };
