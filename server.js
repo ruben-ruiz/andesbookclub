@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyparser = require('body-parser');
 // const axios = require('axios');
 require('dotenv').config();
 
@@ -9,16 +8,12 @@ const users = require('./db/routes/users');
 const books = require('./db/routes/books');
 const questions = require('./db/routes/questions');
 
-app.use(bodyparser.json());
+app.use(express.json());
 app.use(express.static('client/dist'));
-
+// routes
 app.use('/users', users);
 app.use('/books', books);
 app.use('/questions', questions);
-
-app.get('/', (req, res) => {
-  res.status(200).send('Hello World');
-});
 
 const PORT = 8080;
 
