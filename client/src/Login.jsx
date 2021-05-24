@@ -1,11 +1,14 @@
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
+import { refreshTokenSetup } from './util/refreshToken';
 
-const clientId = 'AndesBookClub.apps.googleusercontent.com';
+const clientId = '679046458711-521g8lfg0gq7gqrlubug21l6ekdbiank.apps.googleusercontent.com';
 
 function Login() {
   const onSuccess = (res) => {
     console.log('[Login Success] currentUser:', res.profileObj)
+
+    refreshTokenSetup(res);
   };
 
   const onFailure = (res) => {
@@ -18,7 +21,7 @@ function Login() {
         clientId={clientId}
         buttonText='Login'
         onSuccess={onSuccess}
-        onFailure={onFailure}
+        onFailure={err => (console.log('fail', err))}
         cookiePolicy={'single_host_origin'}
         style={{ marginTop: '100px' }}
         isSignedIn={true}
