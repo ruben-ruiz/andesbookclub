@@ -9,9 +9,9 @@ function Footer() {
         <p className="footer-contact-phone">1-(800)-000-0000</p>
       </div>
       <div className="footer-social">
-        <a href="footer-social-twitter">Twitter</a>
-        <a href="footer-social-instagram">Instagram</a>
-        <a href="footer-social-facebook">facebook</a>
+        <a className="footer-social-twitter" href="twitter.com"><img src="https://img.icons8.com/android/24/000000/twitter.png" /></a>
+        <a className="footer-social-instagram" href="instagram.com"><img src="https://img.icons8.com/material-rounded/24/000000/instagram-new.png" /></a>
+        <a className="footer-social-facebook" href="facebook.com"><img src="https://img.icons8.com/android/24/000000/facebook-new.png" /></a>
       </div>
     </div>
   );
