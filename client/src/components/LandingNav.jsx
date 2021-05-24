@@ -1,4 +1,6 @@
 import React from 'react';
+import Login from '../Login.jsx';
+import Logout from '../Logout.jsx';
 
 function LandingNav() {
   return (
@@ -8,8 +10,9 @@ function LandingNav() {
         <input type="text" placeholder="Search" />
       </form>
       <a className="nav-option">About</a>
-      <a className="nav-option">Mission</a>
-      <button type="button" className="nav-signin">Sign In</button>
+      <a className="nav-option">Mission</a><br/>
+      <Login />
+      <Logout />
     </div>
   );
 }
