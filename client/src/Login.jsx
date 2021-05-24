@@ -11,10 +11,6 @@ function Login() {
     refreshTokenSetup(res);
   };
 
-  const onFailure = (res) => {
-    console.log('[Login failed] res:', res);
-  }
-
   return (
     <div>
       <GoogleLogin
