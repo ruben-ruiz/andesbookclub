@@ -1,5 +1,6 @@
 import React from 'react';
 import Landing from './components/Landing';
+import QuizModal from './components/QuizModal';
 
 // import axios from 'axios';
 
@@ -8,7 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Landing />
+        <QuizModal />
       </div>
     );
   }
