@@ -1,4 +1,6 @@
 import React from 'react';
+import Login from './Login';
+import Logout from './Logout';
 import Landing from './components/Landing';
 
 // import axios from 'axios';
