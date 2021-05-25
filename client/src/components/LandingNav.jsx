@@ -1,4 +1,6 @@
 import React from 'react';
+import Login from '../Login.jsx';
+import Logout from '../Logout.jsx';
 import {
   Collapse,
   Navbar,
@@ -27,6 +29,8 @@ function LandingNav() {
           <a className="nav-option-item">About</a>
           <a className="nav-option-item">Mission</a>
           <Button className="nav-option-signin">Sign In</Button>
+          <Login />
+          <Logout />
         </div>
       </div>
     </Navbar>
