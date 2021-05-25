@@ -6,12 +6,59 @@
   box-sizing: inherit;
 }
 
-/* html {
+html {
   font-size: 62.5%;
-} */
+}
 
 body {
   box-sizing: border-box;
   position: relative;
-  background-color: red;
+}
+
+.slider-container {
+  height: inherit;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0rem 2rem;
+  padding: 3px;
+  scroll-behavior: smooth;
+}
+
+.slider-wrapper {
+  height: inherit;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+
+}
+
+.slider-arrow {
+  position: absolute;
+  font-size: 5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.slider-arrow-prev {
+  left: -2rem;
+}
+
+.slider-arrow-next {
+  right: -2rem;
+}
+
+.slider-disable {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.card {
+  height: inherit;
+  flex-shrink: 0;
+  width: 20%;
+  margin-right: 1.5rem;
+  cursor: pointer;
 }
