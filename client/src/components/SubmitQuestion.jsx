@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Form, FormGroup, Label, Input, Button,
+  Form, FormGroup, Label, Input,
 } from 'reactstrap';
 
 const SubmitQuestion = () => (
@@ -35,7 +35,6 @@ const SubmitQuestion = () => (
           type="text"
         />
       </FormGroup>
-      <Button>Sumbit Question</Button>
     </Form>
   </div>
 );
