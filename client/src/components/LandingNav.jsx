@@ -14,6 +14,8 @@ import {
   NavbarText,
   Button
 } from 'reactstrap';
+import Login from '../Login.jsx';
+import Logout from '../Logout.jsx';
 
 function LandingNav() {
   return (
@@ -27,6 +29,8 @@ function LandingNav() {
           <a className="nav-option-item">About</a>
           <a className="nav-option-item">Mission</a>
           <Button className="nav-option-signin">Sign In</Button>
+          <Login />
+          <Logout />
         </div>
       </div>
     </Navbar>
