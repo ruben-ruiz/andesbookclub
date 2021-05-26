@@ -35,7 +35,7 @@ const LineGraph = (props) => {
   };
 
   return (
-    <div id="line-graph">
+    <div className="line-graph">
       <h1>Line Graph</h1>
       <Line data={data} options={options} />
     </div>

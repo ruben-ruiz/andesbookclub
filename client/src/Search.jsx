@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Input } from 'reactstrap';
 import SearchResult from './SearchResult';
-import css from './styles.css';
+// import css from './styles.css';
 
 class Search extends React.Component {
   constructor() {
