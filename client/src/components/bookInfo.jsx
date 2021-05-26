@@ -35,6 +35,15 @@ class bookInfo extends React.Component {
           pageCount: data.pageCount,
           thumbnail: data.imageLinks.smallThumbnail,
         });
+        return response.data.id;
+      })
+      .then((bookId) => {
+        axios.get(`/books/isCompleted/${bookId}`)
+          .then((res) => {
+            this.setState({
+              completedReading: res.data,
+            });
+          });
       });
   }
 
