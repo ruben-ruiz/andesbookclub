@@ -3,7 +3,7 @@ import {
   Button, ListGroup, ListGroupItem,
 } from 'reactstrap';
 import axios from 'axios';
-import Dropdown from './dropDown';
+import parse from 'html-react-parser';
 import Image from './MainInfo';
 import SubmitQuestion from './SubmitQuestion';
 
@@ -11,7 +11,7 @@ class bookInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      completedReading: true,
+      completedReading: false,
     };
     this.showQuestions = this.showQuestions.bind(this);
   }
@@ -60,7 +60,6 @@ class bookInfo extends React.Component {
     // const { completedReading } = this.state;
     return (
       <div>
-        <Dropdown />
         <Image data={dataArr} />
         <ListGroup>
           <ListGroupItem>
@@ -81,7 +80,7 @@ class bookInfo extends React.Component {
           </ListGroupItem>
         </ListGroup>
         <div>
-          {description}
+          {description ? parse(description) : null}
         </div>
         <Button
           color="warning"
