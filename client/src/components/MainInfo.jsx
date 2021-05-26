@@ -4,12 +4,10 @@ import {
   CardTitle, CardSubtitle,
   Tooltip,
 } from 'reactstrap';
-import PropTypes from 'prop-types';
 import { ImBooks } from 'react-icons/im';
 import { IoIosBookmarks } from 'react-icons/io';
 
-const TooltipAddBook = (props) => {
-  // const { item, id } = props;
+const TooltipAddBook = () => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const toggle = () => setTooltipOpen(!tooltipOpen);
@@ -18,7 +16,6 @@ const TooltipAddBook = (props) => {
     <span>
       <IoIosBookmarks className="icon" id="Tooltip-add" />
       <Tooltip
-        // placement={item.placement}
         isOpen={tooltipOpen}
         target="Tooltip-add"
         toggle={toggle}
@@ -29,13 +26,7 @@ const TooltipAddBook = (props) => {
   );
 };
 
-/* TooltipAddBook.propTypes = {
-  item: PropTypes.string,
-  id: PropTypes.string
-}; */
-
-const TooltipFinishBook = (props) => {
-  // const { item, id } = props;
+const TooltipFinishBook = () => {
   const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const toggle = () => setTooltipOpen(!tooltipOpen);
@@ -44,7 +35,6 @@ const TooltipFinishBook = (props) => {
     <span>
       <ImBooks className="icon" id="Tooltip-finished" />
       <Tooltip
-        // placement={item.placement}
         isOpen={tooltipOpen}
         target="Tooltip-finished"
         toggle={toggle}
@@ -56,6 +46,7 @@ const TooltipFinishBook = (props) => {
 };
 
 const MainInfo = (props) => {
+  // eslint-disable-next-line react/prop-types
   const { data } = props;
   return (
     <div>
@@ -74,10 +65,5 @@ const MainInfo = (props) => {
     </div>
   );
 };
-
-const myPropTypes = {
-  data: PropTypes.array,
-
-}
 
 export default MainInfo;

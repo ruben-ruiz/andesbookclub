@@ -4,4 +4,10 @@ client/dist/bundle.js
 coverage
 logs
 *.log
+<<<<<<< HEAD
 *.env
+=======
+fakeQuestions.json
+fakeUsers.json
+.env
+>>>>>>> 325940f62651801b209847d959367ae2a7bd0aa0
