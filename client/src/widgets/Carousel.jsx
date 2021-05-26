@@ -22,7 +22,7 @@ const Carousel = ({ children, className }) => {
     setOffsetWidthValue(containerRef.current.offsetWidth);
     setScrollWidthValue(containerRef.current.scrollWidth);
     checkButtons(offsetWidthValue, scrollWidthValue);
-  }, [offsetWidthValue]);
+  }, [offsetWidthValue, children]);
 
   const updateScrollLeft = (isPositive) => {
     if (isPositive) {

@@ -799,7 +799,9 @@ const ReadingList = () => {
   const [books, updateBooks] = useState();
 
   const deleteBook = (index) => {
-    console.log(index);
+    let newBooks = books.slice();
+    newBooks.splice(index, 1);
+    updateBooks(newBooks);
   };
 
   const getBooks = () => {
