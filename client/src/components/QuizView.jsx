@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function QuizView(props) {
-  let { set, prev, next, list } = props;
+  let { set, prev, next, list, answers } = props;
 
   if (!Object.keys(set).length) {
     set = list[0];
@@ -10,11 +11,33 @@ function QuizView(props) {
   const responseBody = {
     questionId: set.questionId,
     userId: 1,
-    id: 1,
-    answeredAt: new Date(),
     isCorrect: false,
+    selectedAnswer: 1,
     userRating: 0,
   };
+
+  let submit = (<button type="button" className="quiz-menu-btn" onClick={() => {
+    axios.post('/answers', {
+      answers: Object.values(answers),
+    })
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  }}>
+    Submit
+  </button>);
+
+  let nextBtn = (<button
+    type="button"
+    className="quiz-menu-btn"
+    onClick={() => {
+      console.log(answers);
+      next(set);
+    }
+    }>
+    Next
+  </button>);
+
+  let buttonType = JSON.stringify(set) === JSON.stringify(list[list.length - 1]) ? submit : nextBtn;
 
   const choices = [];
 
@@ -61,8 +84,9 @@ function QuizView(props) {
           choices.map((answer, i) => {
             return <button id={i + 1} key={i + 1} type="button" className="quiz-answer" onClick={(e) => {
               responseBody.isCorrect = set.correctAnswer === parseInt(e.target.id)
-              responseBody.answeredAt = new Date();
+              responseBody.selectedAnswer = parseInt(e.target.id);
               console.log(responseBody);
+              answers[set.questionId] = responseBody;
             }}>{answer}</button>;
           })
         }
@@ -70,8 +94,29 @@ function QuizView(props) {
 
       <div className="quiz-menu">
         <button type="button" className="quiz-menu-btn" onClick={() => prev(set)}>Back</button>
-        <button type="button" className="quiz-menu-btn">Submit</button>
-        <button type="button" className="quiz-menu-btn" onClick={() => next(set)}>Next</button>
+        {buttonType}
+        {/* <button
+          type="button"
+          className="quiz-menu-btn"
+          onClick={() => {
+            axios.post('/answers', {
+              answers: Object.values(answers),
+            })
+              .then((data) => console.log(data))
+              .catch((err) => console.log(err));
+          }}>
+          Submit
+          </button> */}
+        {/* <button
+          type="button"
+          className="quiz-menu-btn"
+          onClick={() => {
+            console.log(answers);
+            next(set);
+          }
+          }>
+          Next
+          </button> */}
       </div>
     </div>
   );

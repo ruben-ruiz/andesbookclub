@@ -28,6 +28,7 @@ function QuizModal(props) {
   },
   ]);
   const [currentSet, changeSet] = useState({});
+  const [answers, updateAnswers] = useState({});
 
   const handleNext = (set) => {
     // console.log(typeof i);
@@ -65,7 +66,7 @@ function QuizModal(props) {
     // use updateSets
   }, []);
 
-  const view = !start ? <button type="button" className="start-quiz question-vote-choice" onClick={e => changeStart(!start)}>start quiz</button> : <QuizView set={currentSet} prev={handlePrev} next={handleNext} list={questionSets} />;
+  const view = !start ? <button type="button" className="start-quiz question-vote-choice" onClick={e => changeStart(!start)}>start quiz</button> : <QuizView set={currentSet} prev={handlePrev} next={handleNext} list={questionSets} answers={answers} />;
 
   return (
     <div className="popup">
