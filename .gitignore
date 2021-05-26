@@ -4,6 +4,10 @@ client/dist/bundle.js
 coverage
 logs
 *.log
+<<<<<<< HEAD
 *.env
 fakeQuestions.json
 fakeUsers.json
+=======
+.env
+>>>>>>> main

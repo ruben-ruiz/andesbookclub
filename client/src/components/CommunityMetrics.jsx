@@ -28,7 +28,7 @@ class CommunityMetrics extends React.Component {
 
   getUsers() {
     return new Promise ((resolve, reject) => {
-      axios.get('/users')
+      axios.get('/questions/topusers')
       .then((res) => resolve(res))
       .catch((err) => reject(err));
     })
