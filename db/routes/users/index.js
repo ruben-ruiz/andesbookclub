@@ -1,11 +1,16 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
 const express = require('express');
 const { OAuth2Client } = require('google-auth-library');
+
 const client = new OAuth2Client(process.env.CLIENT_ID);
 const db = require('../../index');
 
 const usersRouter = express.Router();
 
-function insertUser({ sub, email, name, given_name, family_name, picture }) {
+function insertUser({
+  sub, email, name, given_name, family_name, picture,
+}) {
   return db.query(`
   INSERT INTO
   users (
