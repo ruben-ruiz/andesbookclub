@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 // import Login from './Login';
 // import Logout from './Logout';
@@ -11,10 +12,14 @@ import Landing from './components/Landing';
 class App extends React.Component {
   render() {
     return (
-      <>
-        <Landing />
-        <Dashboard />
-      </>
+      <Switch>
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/">
+          <Landing />
+        </Route>
+      </Switch>
     );
   }
 }
