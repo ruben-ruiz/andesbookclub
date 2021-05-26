@@ -1,4 +1,5 @@
 import React from 'react';
+import ReadingList from './components/ReadingList';
 // import Login from './Login';
 // import Logout from './Logout';
 import Landing from './components/Landing';
@@ -11,7 +12,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Landing />
+      <ReadingList />
       </div>
     );
   }
