@@ -23,4 +23,149 @@ body {
 .icon {
   width: 50px;
   height: 50px;
+a {
+  text-decoration: none;
+  color: black;
+}
+
+/* LANDING PAGE */
+/* ---------------------------- */
+.landing {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAVBAR */
+/* -------------------------- */
+.nav-general {
+  width: 100%;
+  background-color: rgb(46, 46, 77);
+  border: white 2px solid;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-general-brand {
+  color: white;
+}
+
+.nav-general-form {
+  width: 50%;
+  justify-self: flex-end;
+  align-self: center;
+}
+.nav-general-form-input {
+  width: 100%;
+}
+
+.nav-general-content {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav-option {
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav-option-item {
+  color: white;
+  align-self: center;
+  text-decoration: none;
+}
+
+.nav-option-signin {
+  background-color: yellow;
+  color: black;
+}
+
+/* LANDING CONTENT */
+/* ----------------------------- */
+
+.hook,
+.about,
+.mission {
+  margin-top: 20px;
+  padding: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  height: 700px;
+}
+
+.hook {
+  color: white;
+  background-color: rgb(46, 46, 77);
+}
+
+.hook-left {
+  width: 30%;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.hook-phrase {
+  font-size: 3em;
+}
+
+.hook-btn {
+  background-color: yellow;
+  color: black;
+  width: 120px;
+  height: 50px;
+  font-size: 1.8em;
+  align-self: center;
+}
+
+.hook-img {
+  align-self: center;
+  height: 600px;
+}
+
+.about-phrase,
+.mission-phrase {
+  align-self: center;
+  width: 40%;
+  font-size: 2.5em;
+  white-space: pre-wrap;
+}
+
+.about-img {
+  width: 30%;
+}
+
+.mission {
+  background-color: rgb(237, 239, 251);
+}
+
+.mission-img {
+  align-self: center;
+  width: 30%;
+  height: 80%;
+}
+
+.footer {
+  height: 200px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.footer-contact {
+  margin-right: 37%;
+}
+
+.footer-social {
+  align-self: flex-end;
+  margin-bottom: 50px;
+  margin-right: 20px;
+  justify-self: right;
+}
+
+.footer-social>* {
+  margin: 0 10px;
 }
