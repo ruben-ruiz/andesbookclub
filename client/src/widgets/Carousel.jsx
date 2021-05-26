@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
-const Carousel = ({ cards, className }) => {
+const Carousel = ({ children, className }) => {
   const containerRef = useRef();
 
   const [prevDisable, setPrevDisable] = useState(true);
@@ -47,7 +47,7 @@ const Carousel = ({ cards, className }) => {
         {prevDisable ? null : <MdKeyboardArrowLeft />}
       </div>
 
-      <div className="slider-wrapper slider-wrapper">{cards}</div>
+      <div className="slider-wrapper slider-wrapper">{ children }</div>
 
       <div
         className={`slider-arrow slider-arrow-next ${nextDisable ? 'slider-arrow slider-arrow-disable' : ''}`}

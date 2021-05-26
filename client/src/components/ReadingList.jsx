@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Book from './Book';
 import Carousel from '../widgets/Carousel';
 
-// const cards = [<CardTest />, <CardTest />, <CardTest />, <CardTest />, <CardTest />, <CardTest />];
-const books = [
+const data = [
   {
       "kind": "books#volume",
       "id": "f280CwAAQBAJ",
@@ -795,14 +794,39 @@ const books = [
   }
 ]
 
-const cards = books.map((book, index) => {
-  let volume = book.volumeInfo;
-  let smallThumbnail = volume.imageLinks.smallThumbnail;
-  return (<Book key={index} smallThumbnail={smallThumbnail} />)
-});
 
-const ReadingList = () => (
-  <Carousel cards={cards} className="reading-section"/>
-);
+const ReadingList = () => {
+  const [books, updateBooks] = useState();
+
+  const deleteBook = (index) => {
+    console.log(index);
+  };
+
+  const getBooks = () => {
+    updateBooks(data);
+  };
+
+  useEffect(() => {
+    getBooks();
+  }, []);
+
+  return (
+      <div className="reading-list">
+          <h2>Reading List</h2>
+          {books ?
+            <Carousel className="reading-section" clickHandler={deleteBook}>
+                { books.map((book, index) => {
+                    let volume = book.volumeInfo;
+                    let smallThumbnail = volume.imageLinks.smallThumbnail;
+                    return (<Book key={index} smallThumbnail={smallThumbnail} index={index} deleteBook={deleteBook} />)
+                   })
+                }
+            </Carousel>
+          : <></>
+          }
+      </div>
+
+  );
+};
 
 export default ReadingList;
