@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  Button, ListGroup, ListGroupItem,
+  ListGroup, ListGroupItem,
 } from 'reactstrap';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import Image from './MainInfo';
-import SubmitQuestion from './SubmitQuestion';
+import QuestionsModal from './questionsSubmitModal';
 
 class bookInfo extends React.Component {
   constructor(props) {
@@ -27,15 +27,16 @@ class bookInfo extends React.Component {
         this.setState({
           title: data.title,
           subtitle: data.subtitle,
-          author: data.author,
+          author: data.authors,
           releaseYear: data.publishedDate,
           description: data.description,
           categories: data.categories,
           publisher: data.publisher,
           pageCount: data.pageCount,
-          thumbnail: data.imageLinks.smallThumbnail,
+          thumbnail: data.imageLinks.thumbnail,
         });
       });
+    this.showQuestions();
   }
 
   showQuestions() {
@@ -53,7 +54,7 @@ class bookInfo extends React.Component {
 
   render() {
     const {
-      showQuestions, showAlert, releaseYear, categories, publisher, pageCount,
+      showQuestions, releaseYear, categories, publisher, pageCount,
       description, title, subtitle, author, thumbnail,
     } = this.state;
     const dataArr = [title, subtitle, author, thumbnail];
@@ -82,21 +83,7 @@ class bookInfo extends React.Component {
         <div>
           {description ? parse(description) : null}
         </div>
-        <Button
-          color="warning"
-          onClick={this.showQuestions}
-        >
-          Add A Question!
-        </Button>
-        {showQuestions ? <SubmitQuestion /> : null}
-        {showAlert ? (
-          <div>
-            You must finish reading this book before you can submit questions for it!
-            <button type="button">
-              got it!
-            </button>
-          </div>
-        ) : null}
+        <QuestionsModal modalOrAlert={showQuestions} />
       </div>
     );
   }
