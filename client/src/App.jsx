@@ -1,6 +1,5 @@
 import React from 'react';
-import Login from './Login';
-import Logout from './Logout';
+
 import Landing from './components/Landing';
 import QuizModal from './components/QuizModal';
 
@@ -11,7 +10,8 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <QuizModal />
+        {/* <Landing /> */}
+        {/* <QuizModal /> */}
       </div>
     );
   }

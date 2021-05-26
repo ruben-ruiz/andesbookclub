@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 function QuizView(props) {
-  const set = {
-    questionId: 1,
-    questionBody: 'Who invented Chips and Guac?',
-    answer1: 'a',
-    answer2: 'b',
-    answer3: 'c',
-    answer4: 'd',
-    correctAnswer: 1,
-    relevance: 50,
-    isReported: false,
-  };
+  let { set, prev, next, list } = props;
+
+  if (!Object.keys(set).length) {
+    set = list[0];
+  }
 
   const responseBody = {
     questionId: set.questionId,
@@ -32,9 +26,6 @@ function QuizView(props) {
 
   return (
     <div className="quiz-prompt">
-      <p className="quiz-question">
-        Question 1
-      </p>
       <div className="question-vote">
         <button
           type="button"
@@ -46,7 +37,7 @@ function QuizView(props) {
             }
             responseBody.userRating = 1;
           }}>
-          Upvote
+          <img src="https://img.icons8.com/ios/44/000000/good-quality--v1.png" />
         </button>
         <button
           type="button"
@@ -58,24 +49,29 @@ function QuizView(props) {
             }
             responseBody.userRating = -1;
           }}>
-          Downvote
+          <img src="https://img.icons8.com/ios/44/000000/poor-quality.png" />
         </button>
       </div>
+      <p className="quiz-question">
+        {set.questionBody}
+      </p>
 
       <form className="answers" onSubmit={(e) => { }}>
         {
-          choices.map((a, i) => {
+          choices.map((answer, i) => {
             return <button id={i + 1} key={i + 1} type="button" className="quiz-answer" onClick={(e) => {
-              responseBody.isCorrect = set.correctAnswer === parseInt(e.target.id);
-            }}>answer</button>;
+              responseBody.isCorrect = set.correctAnswer === parseInt(e.target.id)
+              responseBody.answeredAt = new Date();
+              console.log(responseBody);
+            }}>{answer}</button>;
           })
         }
       </form>
 
       <div className="quiz-menu">
-        <button type="button" className="quiz-menu-btn">Back</button>
+        <button type="button" className="quiz-menu-btn" onClick={() => prev(set)}>Back</button>
         <button type="button" className="quiz-menu-btn">Submit</button>
-        <button type="button" className="quiz-menu-btn">Next</button>
+        <button type="button" className="quiz-menu-btn" onClick={() => next(set)}>Next</button>
       </div>
     </div>
   );
