@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-
-import React from 'react';
 import ReadingList from './components/ReadingList';
 
 // import Login from './Login';

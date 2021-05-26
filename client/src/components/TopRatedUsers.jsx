@@ -13,9 +13,9 @@ class TopRatedUsers extends React.Component {
           {this.props.users.map((user, index) =>
             <div className='cm-top-rated-user' key={index}>
               <span className='cm-rankNum'>0{index + 1}</span> &nbsp;&nbsp;&nbsp;
-              <span className='cm-top-username'>{user.profileName}</span>
-              <span className='cm-user-upvotes'>Upvotes: {user.upvotes}</span>
-              <span className='cm-questions-submitted'>Questions Submitted: {user.questions.length}</span>
+              <span className='cm-top-username'>{user.profilename}</span>
+              <span className='cm-user-upvotes'>Upvotes: {user.sum}</span>
+              <span className='cm-questions-submitted'>Questions Submitted: {user.count}</span>
             </div>
           )}
         </div>

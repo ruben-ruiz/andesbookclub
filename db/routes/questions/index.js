@@ -2,7 +2,9 @@ const express = require('express');
 
 const questionsRouter = express.Router();
 
-const questionsTopUsersRouter = require('/topusers');
+const questionsTopUsersRouter = require('./topUsers');
+const questionsTopQuestionsRouter = require('./topQuestions');
+
 
 // root router for questions
 questionsRouter.get('/', (req, res) => {
@@ -10,5 +12,6 @@ questionsRouter.get('/', (req, res) => {
 });
 
 questionsRouter.use('/topusers', questionsTopUsersRouter);
+questionsRouter.use('/topquestions', questionsTopQuestionsRouter);
 
 module.exports = questionsRouter;

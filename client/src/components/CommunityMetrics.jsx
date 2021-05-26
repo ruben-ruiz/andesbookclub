@@ -19,9 +19,10 @@ class CommunityMetrics extends React.Component {
   }
 
   componentDidMount() {
-    // this.getData();
+    this.getData();
+    console.log('users', this.state.users)
+    console.log('questions', this.state.questions)
     this.setState({
-      users: fakeUsers,
       questions: fakeQuestions
     })
   }
@@ -36,7 +37,7 @@ class CommunityMetrics extends React.Component {
 
   getQuestions() {
     return new Promise ((resolve, reject) => {
-      axios.get('/questions')
+      axios.get('/questions/topquestions')
       .then((res) => resolve(res))
       .catch((err) => reject(err))
     })
@@ -47,9 +48,10 @@ class CommunityMetrics extends React.Component {
       this.getUsers(),
       this.getQuestions()
     ]).then(responses => {
+      console.log('responses', responses);
       this.setState({
-        users: responses[0],
-        questions: responses[1]
+        users: responses[0].data,
+        questions: responses[1].data
       })
     }).catch(err => {
       console.log(err);
