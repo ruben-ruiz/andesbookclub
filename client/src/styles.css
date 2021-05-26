@@ -16,3 +16,61 @@ body {
   background-color: white;
 }
 
+/* [ Community Metrics ] */
+
+.cm-top-rated-user {
+  height: px;
+  width: auto;
+  border: 5px solid grey;
+  padding: 10px;
+  text-align: center;
+}
+
+.cm-top-rated-question {
+  display: block;
+  height: 50px;
+  width: auto;
+  border: 5px solid grey;
+  padding: 10px;
+  text-align: center;
+}
+
+.cm-rankNum {
+  position: absolute;
+  font-weight: bolder;
+  color: grey;
+  display: inline-flex;
+  left: 40px
+
+}
+
+.cm-top-username {
+  position: absolute;
+  color: blue;
+  display: inline-flex;
+  left: 100px
+}
+
+.cm-questions-submitted {
+  position: absolute;
+  right: 40px;
+}
+
+.cm-question-upvotes {
+  position: absolute;
+  right: 40px
+}
+
+.cm-question-body {
+  text-align: center;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.metrics-heading {
+  text-align: center;
+  margin: auto;
+}
+
+
+

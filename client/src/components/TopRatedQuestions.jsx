@@ -11,15 +11,18 @@ class TopRatedQuestions extends React.Component {
       <div>
         <h3 id='Top-Rated-Questions-Heading' className='metrics-heading'>Top Rated Questions</h3>
         <div className='top-rated-questions'>
-          {questions.map((question, index) =>
-            <div>
-              <span className='rankNum'>0{index+1}</span> {question.createdBy} Q: {question.questionBody} Upvotes: {question.upvotes}
+          {this.props.questions.map((question, index) =>
+            <div className='cm-top-rated-question' key={index}>
+              <span className='cm-rankNum'>0{index+1}</span> &nbsp;&nbsp;&nbsp;
+              <span className='cm-top-username'>{question.createdBy}</span>
+              <span className='cm-question-body'>Q: {question.questionBody}</span>
+              <span className='cm-question-upvotes'>Upvotes: {question.upvotes}</span>
             </div>
           )}
         </div>
       </div>
     )
   }
-}
+};
 
 export default TopRatedQuestions;
