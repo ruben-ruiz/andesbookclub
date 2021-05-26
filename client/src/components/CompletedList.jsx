@@ -795,7 +795,7 @@ const data = [
 ]
 
 
-const ReadingList = () => {
+const CompletedList = () => {
   const [books, updateBooks] = useState();
 
   const deleteBook = (index) => {
@@ -813,10 +813,10 @@ const ReadingList = () => {
   }, []);
 
   return (
-      <div className="reading-list">
-          <h2>Currently Reading</h2>
+      <div className="completed-list">
+          <h2>Completed Books</h2>
           {books ?
-            <Carousel className="reading-section" clickHandler={deleteBook}>
+            <Carousel className="completed-section" clickHandler={deleteBook}>
                 { books.map((book, index) => {
                     let volume = book.volumeInfo;
                     let smallThumbnail = volume.imageLinks.smallThumbnail;
@@ -831,4 +831,4 @@ const ReadingList = () => {
   );
 };
 
-export default ReadingList;
+export default CompletedList;

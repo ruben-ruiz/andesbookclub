@@ -73,7 +73,8 @@ body {
 
 /*///////////// COMPONENTS ////////////////*/
 
-.reading-section {
+.reading-section,
+.completed-section {
   height: 20rem;
 }
 
