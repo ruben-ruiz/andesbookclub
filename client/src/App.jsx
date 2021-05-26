@@ -11,14 +11,12 @@ import CommunityMetrics from './components/CommunityMetrics';
 import BookInfo from './components/bookInfo';
 
 // eslint-disable-next-line react/prefer-stateless-function
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <CommunityMetrics />
-      </div>
-    );
-  }
+const App = () =>  {
+  return (
+    <div>
+      <CommunityMetrics />
+    </div>
+  );
 }
 
 export default App;
