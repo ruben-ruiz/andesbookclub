@@ -28,7 +28,7 @@ function LandingNav() {
         <div className="nav-option">
           <a className="nav-option-item">About</a>
           <a className="nav-option-item">Mission</a>
-          <Button className="nav-option-signin">Sign In</Button>
+          {/* <Button className="nav-option-signin">Sign In</Button> */}
           <Login />
           <Logout />
         </div>
