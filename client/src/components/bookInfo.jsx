@@ -6,13 +6,12 @@ import axios from 'axios';
 import parse from 'html-react-parser';
 import Image from './MainInfo';
 import QuestionsModal from './questionsSubmitModal';
-import Navigation from './Navbar';
 
 class bookInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      completedReading: true,
+      completedReading: false,
     };
     this.showQuestions = this.showQuestions.bind(this);
   }
@@ -34,7 +33,7 @@ class bookInfo extends React.Component {
           categories: data.categories,
           publisher: data.publisher,
           pageCount: data.pageCount,
-          thumbnail: data.imageLinks.smallThumbnail,
+          thumbnail: data.imageLinks.thumbnail,
         });
       });
     this.showQuestions();
@@ -62,7 +61,6 @@ class bookInfo extends React.Component {
     // const { completedReading } = this.state;
     return (
       <div>
-        <Navigation />
         <Image data={dataArr} />
         <ListGroup>
           <ListGroupItem>
