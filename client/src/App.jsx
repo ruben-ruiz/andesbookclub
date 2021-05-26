@@ -1,6 +1,4 @@
 import React, {useState} from 'react';
-
-import React from 'react';
 import ReadingList from './components/ReadingList';
 
 // import Login from './Login';
@@ -8,15 +6,15 @@ import ReadingList from './components/ReadingList';
 import axios from 'axios';
 
 import Landing from './components/Landing';
+import CommunityMetrics from './components/CommunityMetrics';
 
 import BookInfo from './components/bookInfo';
 
 // eslint-disable-next-line react/prefer-stateless-function
-
-const App = () => {
+const App = () =>  {
   return (
     <div>
-      <Landing />
+      <CommunityMetrics />
     </div>
   );
 }
