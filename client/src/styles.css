@@ -299,10 +299,6 @@ a {
 
 /* Questions and Answers Modals */
 /* ========================== */
-body {
-  display: flex;
-  justify-content: center;
-}
 
 .popup {
   width: 100%;
