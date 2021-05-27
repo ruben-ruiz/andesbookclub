@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/metrics">
           <CommunityMetrics />
         </Route>
-        <Route path="/book/:id/info">
+        <Route path="/bookInfo">
           <BookInfo />
         </Route>
         <Route path="/">

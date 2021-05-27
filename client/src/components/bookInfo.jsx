@@ -11,7 +11,7 @@ class bookInfo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      completedReading: false,
+      completedReading: true,
     };
     this.showQuestions = this.showQuestions.bind(this);
   }
@@ -34,6 +34,7 @@ class bookInfo extends React.Component {
           publisher: data.publisher,
           pageCount: data.pageCount,
           thumbnail: data.imageLinks.thumbnail,
+          bookId: response.data.id,
         });
         return response.data.id;
       })
@@ -64,10 +65,11 @@ class bookInfo extends React.Component {
   render() {
     const {
       showQuestions, releaseYear, categories, publisher, pageCount,
-      description, title, subtitle, author, thumbnail,
+      description, title, subtitle, author, thumbnail, bookId,
     } = this.state;
     const dataArr = [title, subtitle, author, thumbnail];
     // const { completedReading } = this.state;
+    console.log(bookId);
     return (
       <div>
         <Image data={dataArr} />
@@ -92,7 +94,7 @@ class bookInfo extends React.Component {
         <div>
           {description ? parse(description) : null}
         </div>
-        <QuestionsModal modalOrAlert={showQuestions} />
+        <QuestionsModal modalOrAlert={showQuestions} bookId={bookId} />
       </div>
     );
   }
