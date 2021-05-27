@@ -8,7 +8,7 @@ answerRouter.get('/', (req, res) => {
 });
 answerRouter.post('/', (req, res) => {
   const { body } = req;
-
+  console.log(req.session);
   body.answers.forEach((answer) => {
     db.query(`
     INSERT INTO
