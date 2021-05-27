@@ -1,9 +1,8 @@
 node_modules
 client/dist/bundle.js
-.env
+*.env
 *.map
 coverage
 logs
 *.log
-.env
 package-lock.json

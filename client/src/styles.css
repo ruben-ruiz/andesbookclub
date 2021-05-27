@@ -254,6 +254,7 @@ body {
 }
 
 .quiz {
+  font-size: 2em;
   width: 1200px;
   height: 800px;
   display: flex;

@@ -4,29 +4,7 @@ import QuizView from './QuizView';
 
 function QuizModal(props) {
   const [start, changeStart] = useState(false);
-  const [questionSets, updateSets] = useState([{
-    questionId: 1,
-    questionBody: 'Who invented Chips and Guac?',
-    answer1: 'Pablo Escobar.',
-    answer2: 'Lincoln',
-    answer3: 'The guy down the street',
-    answer4: 'Bob',
-    correctAnswer: 1,
-    relevance: 50,
-    isReported: false,
-  },
-  {
-    questionId: 2,
-    questionBody: 'Dark Chocolate comes from what tree?',
-    answer1: 'Oak Tree',
-    answer2: 'Bonsai Tree',
-    answer3: 'A tree',
-    answer4: 'Cocao Tree',
-    correctAnswer: 4,
-    relevance: 50,
-    isReported: false,
-  },
-  ]);
+  const [questionSets, updateSets] = useState([]);
   const [currentSet, changeSet] = useState({});
   const [answers, updateAnswers] = useState({});
 
@@ -38,7 +16,6 @@ function QuizModal(props) {
         currentIndex = i;
       }
     });
-    console.log(currentIndex);
     if (currentIndex < questionSets.length - 1) {
       changeSet(questionSets[currentIndex + 1]);
     }
@@ -50,17 +27,15 @@ function QuizModal(props) {
         currentIndex = i;
       }
     });
-    console.log(currentIndex);
-
     if (currentIndex > 0) {
       changeSet(questionSets[currentIndex - 1]);
     }
   };
 
   useEffect(() => {
-    axios.get('')
+    axios.get('/questions')
       .then((data) => {
-        console.log(data.data);
+        updateSets(data.data);
       })
       .catch((err) => console.log(err));
     // use updateSets
