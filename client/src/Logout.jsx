@@ -16,7 +16,7 @@ function Logout( { checkLogin } ) {
         // alert(`${res.data} ✌`);
       });
     history.push('/');
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
