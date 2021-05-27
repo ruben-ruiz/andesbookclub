@@ -14,20 +14,23 @@ import BookInfo from './components/bookInfo';
 class App extends React.Component {
   render() {
     return (
-      <Switch>
-        <Route path="/dashboard">
-          <Dashboard />
-        </Route>
-        <Route path="/metrics">
-          <CommunityMetrics />
-        </Route>
-        <Route path="/book/:id/info">
-          <BookInfo />
-        </Route>
-        <Route path="/">
-          <Landing />
-        </Route>
-      </Switch>
+      <div>
+        <Dashboard />
+      </div>
+      // <Switch>
+      //   <Route path="/dashboard">
+      //     <Dashboard />
+      //   </Route>
+      //   <Route path="/metrics">
+      //     <CommunityMetrics />
+      //   </Route>
+      //   <Route path="/book/:id/info">
+      //     <BookInfo />
+      //   </Route>
+      //   <Route path="/">
+      //     <Landing />
+      //   </Route>
+      // </Switch>
     );
   }
 }

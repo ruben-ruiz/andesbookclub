@@ -19,6 +19,18 @@ bookIsCompletedRouter.get('/:bookId', (req, res) => {
         res.send(iscompleted);
       });
   }
+  // const { bookId } = req.params;
+
+  // db.query(`
+  //   SELECT isCompleted
+  //   FROM books
+  //   JOIN userBooks ON userBooks.bookId = books.bookId
+  //   WHERE books.bookId = '${bookId}' AND userBooks.userId = ${1}`)
+  //   .then((dbRes) => {
+  //     const { iscompleted } = dbRes.rows[0];
+  //     // console.log(dbRes.rows);
+  //     res.send(iscompleted);
+  //   });
 });
 
 module.exports = bookIsCompletedRouter;
