@@ -21,7 +21,8 @@ class SearchResult extends React.Component {
         this.setState({
           items: response.data.items,
         });
-      });
+      })
+      .catch();
   }
 
   setCurrentPage(page) {
@@ -31,7 +32,8 @@ class SearchResult extends React.Component {
         this.setState({
           items: response.data.items,
         });
-      });
+      })
+      .catch();
   }
 
   render() {
