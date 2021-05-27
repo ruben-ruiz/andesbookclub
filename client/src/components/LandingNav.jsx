@@ -14,17 +14,16 @@ import {
   NavbarText,
   Button
 } from 'reactstrap';
-import Login from '../Login.jsx';
-import Logout from '../Logout.jsx';
+import Login from '../Login';
+import Logout from '../Logout';
+import Search from '../Search';
 
 function LandingNav() {
   return (
     <Navbar className="nav-general" fixed="top">
       <div className="nav-general-content">
         <NavbarBrand className="nav-general-brand">Andes Bookclub</NavbarBrand>
-        <form onSubmit={() => { }} className="nav-general-form">
-          <input type="text" placeholder="Search" className="nav-general-form-input" />
-        </form>
+        <Search />
         <div className="nav-option">
           <a className="nav-option-item">About</a>
           <a className="nav-option-item">Mission</a>

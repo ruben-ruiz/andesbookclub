@@ -13,8 +13,9 @@ import {
   FormGroup,
   Button,
 } from 'reactstrap';
+import Search from '../Search';
+import Logout from '../Logout.jsx';
 import Login from '../Login';
-import Logout from '../Logout';
 
 function Navigation() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -42,12 +43,7 @@ function Navigation() {
       <NavbarBrand href="/" className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
       <Form onSubmit={(e) => handleSubmit(e)} className="search-form">
         <FormGroup>
-          <InputGroup className="search-fields">
-            <Input type="text" placeholder="Search books..." name="search" onChange={(e) => setSearch(e.target.value)} />
-            <InputGroupAddon addonType="append">
-              <Button type="submit">Search</Button>
-            </InputGroupAddon>
-          </InputGroup>
+          <Search />
         </FormGroup>
       </Form>
       <Nav>
