@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import Book from './Book';
 import Carousel from '../widgets/Carousel';
+import Quiz from './Quiz';
 
 const data = [
   {
@@ -793,41 +793,38 @@ const data = [
       }
   }
 ]
+// <div className="quiz-img-box">
+//   <img top width="80%" src={quizImg} className="quiz-img" alt="quiz_img" />
+//   <h2>Harry Potter</h2>
+// </div>
 
+const QuizzesList = () => {
+  const [quizzes, updateQuizzes] = useState();
 
-const ReadingList = () => {
-  const [books, updateBooks] = useState();
-
-  const deleteBook = (index) => {
-    let newBooks = books.slice();
-    newBooks.splice(index, 1);
-    updateBooks(newBooks);
-  };
-
-  const getBooks = () => {
-    updateBooks(data);
-  };
+  const getQuizzes = () => {
+    updateQuizzes(data);
+  }
 
   useEffect(() => {
-    getBooks();
+    getQuizzes();
   }, []);
 
   return (
-      <div className="reading-list">
-          <h2>Currently Reading</h2>
-          {books ?
-            <Carousel className="reading-section">
-                { books.map((book, index) => {
-                    let volume = book.volumeInfo;
-                    let smallThumbnail = volume.imageLinks.smallThumbnail;
-                    return (<Book key={index} smallThumbnail={smallThumbnail} index={index} deleteBook={deleteBook} />)
-                   })
-                }
-            </Carousel>
-          : <></>
-          }
-      </div>
-  );
+    <div className="quizzes-list">
+        <h2>Pending Quizzes</h2>
+        {quizzes ?
+        <Carousel className="quizzes-section" >
+            { quizzes.map((quiz, index) => {
+                let volume = quiz.volumeInfo;
+                let title = volume.title;
+               return <Quiz key={index} title={title} />
+              })
+            }
+        </Carousel>
+        : <div>No Pending Quizzes</div>
+        }
+    </div>
+  )
 };
 
-export default ReadingList;
+export default QuizzesList;
