@@ -1,6 +1,4 @@
 import React from 'react';
-import { Button } from 'reactstrap';
-// import LandingNav from './LandingNav';
 import Footer from './Footer';
 
 // images
@@ -11,14 +9,12 @@ import graph from '../assets/img/graph.png';
 function Landing() {
   return (
     <div className="landing">
-      {/* <LandingNav /> */}
       <div className="hook">
         <div className="hook-left">
           <p className="hook-phrase">
             &quot;The more that you read, the more things you will know.
             The more that you learn, the more places you&apos;ll go.&quot; - Dr. Seuss
           </p>
-          <Button className="hook-btn">Sign In</Button>
         </div>
         <img src={hookImg} className="hook-img" alt="hook_img" />
       </div>

@@ -38,11 +38,11 @@ function Navigation() {
   };
 
   return (
-    <Navbar className="nav-general" expand="md">
+    <Navbar expand="md">
       <NavbarBrand href="/" className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
-      <Form onSubmit={(e) => handleSubmit(e)}>
+      <Form onSubmit={(e) => handleSubmit(e)} className="search-form">
         <FormGroup>
-          <InputGroup>
+          <InputGroup className="search-fields">
             <Input type="text" placeholder="Search books..." name="search" onChange={(e) => setSearch(e.target.value)} />
             <InputGroupAddon addonType="append">
               <Button type="submit">Search</Button>
