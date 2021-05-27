@@ -8,14 +8,13 @@
   box-sizing: inherit;
 }
 
-html {
+/* html {
   font-size: 62.5%;
-}
+} */
 
 body {
   box-sizing: border-box;
   position: relative;
-  padding: 2rem;
 }
 
 /*///////////// WIDGETS ////////////////*/
@@ -71,6 +70,10 @@ body {
     position: relative;
   }
 
+  .card-body {
+    height: 100%;
+  }
+
 /*///////////// COMPONENTS ////////////////*/
 
 .reading-section,
@@ -107,49 +110,61 @@ a {
 
 /* NAVBAR */
 /* -------------------------- */
-.nav-general {
-  width: 100%;
+.navbar {
+  display: flex;
+  justify-content: space-around;
   background-color: rgb(46, 46, 77);
-  border-bottom: white 2px solid;
-  display: flex;
-  justify-content: center;
+  padding: .5rem;
+  height: 8rem;
+  border-bottom: solid 2px white;
 }
 
-.nav-general-brand {
-  color: white;
+.search-form {
+  width: 60%;
+  height: 3rem;
 }
 
-.nav-general-form {
-  width: 50%;
-  justify-self: flex-end;
-  align-self: center;
-}
-.nav-general-form-input {
-  width: 100%;
+.search-fields {
+  height: 3rem;
 }
 
-.nav-general-content {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.search-fields input {
+  font-size: 1.3rem;
 }
 
-.nav-option {
-  width: 30%;
-  display: flex;
-  justify-content: space-evenly;
+.search-fields button {
+  height: 3rem;
+  font-size: 1.3rem;
 }
 
-.nav-option-item {
-  color: white;
-  align-self: center;
-  text-decoration: none;
-}
-
-.nav-option-signin {
+.search-fields button:hover {
   background-color: yellow;
   color: black;
+}
+
+.navbar-brand {
+  color: white;
+  font-size: 2rem;
+}
+
+.navbar-brand:hover {
+  color: white;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.nav-link:hover {
+  font-size: 1.5rem;
+  color: yellow;
 }
 
 /* [ Community Metrics ] */
@@ -213,19 +228,16 @@ a {
   margin: auto;
 }
 
-
-
 /* LANDING CONTENT */
 /* ----------------------------- */
 
 .hook,
 .about,
 .mission {
-  margin-top: 20px;
-  padding: 40px;
+  padding: 4rem;
   display: flex;
   justify-content: space-evenly;
-  height: 700px;
+  height: 50rem;
 }
 
 .hook {
@@ -397,4 +409,13 @@ a {
   border-radius: 10px;
   padding: 5px 10px;
   width: fit-content;
+}
+
+.quiz-img-box {
+  width: 20rem;
+  background-color: rgb(85, 87, 101);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
