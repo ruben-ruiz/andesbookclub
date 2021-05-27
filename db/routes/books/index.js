@@ -5,6 +5,7 @@ const db = require('../../index');
 const bookidsRouter = require('./booksId');
 const bookTitleRouter = require('./booksTitle');
 const bookIsCompletedRouter = require('./bookCompleted');
+const updateReadingRouter = require('./updateReading');
 // root router for books
 
 booksRouter.get('/', (req, res) => {
@@ -14,12 +15,15 @@ booksRouter.get('/', (req, res) => {
     `)
     .then((dbRes) => {
       res.send(dbRes.rows);
-    });
+    })
+    .catch(err => res.sendStatus(404));
 });
 
 // booksRouter.use('/:bookId', bookidsRouter);
 booksRouter.use('/:bookTitle', bookTitleRouter);
 
 booksRouter.use('/isCompleted', bookIsCompletedRouter);
+
+booksRouter.use('/readList', updateReadingRouter);
 
 module.exports = booksRouter;

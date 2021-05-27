@@ -814,8 +814,9 @@ const QuizzesList = ({ toggleQuiz }) => {
                         axios.get(`books/isCompleted/${book.bookid}`)
                             .then((res) => {
                                 console.log(res.data);
-                                if (!res.data.length) {
-                                    if (!res.data.isCompleted) {
+                                if (res.data.length) {
+                                    console.log(res.date);
+                                    if (res.data[0].iscompleted) {
                                         container.push(book);
                                     }
                                     if (i === data.data.length - 1) {

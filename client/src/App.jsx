@@ -14,7 +14,8 @@ import BookInfo from './components/bookInfo';
 const App = () => {
   return (
     <>
-      <Navbar />
+      <Dashboard />
+      {/* <Navbar />
       <Switch>
         <Route path="/dashboard">
           <Dashboard />
@@ -28,7 +29,7 @@ const App = () => {
         <Route path="/">
           <Landing />
         </Route>
-      </Switch>
+      </Switch> */}
     </>
   );
 }
