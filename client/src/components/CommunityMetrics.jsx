@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import TopRatedQuestions from './TopRatedQuestions';
 import TopRatedUsers from './TopRatedUsers';
+import UserStats from './UserStats';
 // import fakeUsers from '../../fakeUsers.json'
 // import fakeQuestions from '../../fakeQuestions.json'
 
@@ -16,15 +17,15 @@ class CommunityMetrics extends React.Component {
     this.getUsers = this.getUsers.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
     this.getData = this.getData.bind(this);
+    this.getUserStats = this.getUserStats.bind(this);
   }
 
   componentDidMount() {
     this.getData();
     console.log('users', this.state.users);
     console.log('questions', this.state.questions);
-    this.setState({
-      questions: fakeQuestions
-    })
+    this.getUserStats();
+
   }
 
   getUsers() {
@@ -41,6 +42,16 @@ class CommunityMetrics extends React.Component {
       .then((res) => resolve(res))
       .catch((err) => reject(err))
     })
+  }
+
+  getUserStats() {
+    // return new Promise((resolve, reject) => {
+    //   axios.get('users/userstats')
+    //   .then((res) => resolve(res))
+    //   .catch((err) => reject(err))
+    // })
+
+    axios.get('users/userstats').then((res) => console.log('userId', res))
   }
 
   getData() {
@@ -61,6 +72,7 @@ class CommunityMetrics extends React.Component {
   render() {
     return (
       <div>
+        <UserStats/>
         <TopRatedQuestions questions={this.state.questions} />
 
         <TopRatedUsers users={this.state.users} />

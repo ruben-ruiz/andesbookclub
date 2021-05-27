@@ -154,8 +154,13 @@ a {
 
 /* [ Community Metrics ] */
 
+.user-stats {
+  text-align: left;
+  border: solid 5px grey;
+}
+
 .cm-top-rated-user {
-  height: px;
+  height: 50px;
   width: auto;
   border: 5px solid grey;
   padding: 10px;
