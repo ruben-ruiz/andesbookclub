@@ -6,15 +6,15 @@ import Dashboard from './components/Dashboard';
 import Search from './Search';
 import SearchResult from './SearchResult';
 import Landing from './components/Landing';
-import QuizModal from './components/QuizModal';
 import CommunityMetrics from './components/CommunityMetrics';
+import Navbar from './components/Navbar';
 
 import BookInfo from './components/bookInfo';
 
-// eslint-disable-next-line react/prefer-stateless-function
-class App extends React.Component {
-  render() {
-    return (
+const App = () => {
+  return (
+    <>
+      <Navbar />
       <Switch>
         <Route path="/dashboard">
           <Dashboard />
@@ -29,8 +29,8 @@ class App extends React.Component {
           <Landing />
         </Route>
       </Switch>
-    );
-  }
+    </>
+  );
 }
 
 export default App;
