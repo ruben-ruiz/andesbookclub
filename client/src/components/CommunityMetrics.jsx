@@ -22,9 +22,6 @@ class CommunityMetrics extends React.Component {
     this.getData();
     console.log('users', this.state.users);
     console.log('questions', this.state.questions);
-    this.setState({
-      questions: fakeQuestions
-    })
   }
 
   getUsers() {
