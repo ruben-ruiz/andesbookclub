@@ -21,7 +21,7 @@ function LandingNav() {
   return (
     <Navbar className="nav-general" fixed="top">
       <div className="nav-general-content">
-        <NavbarBrand className="nav-general-brand">Ande&apos;s Bookclub</NavbarBrand>
+        <NavbarBrand className="nav-general-brand">Andes Bookclub</NavbarBrand>
         <form onSubmit={() => { }} className="nav-general-form">
           <input type="text" placeholder="Search" className="nav-general-form-input" />
         </form>

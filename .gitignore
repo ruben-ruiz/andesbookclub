@@ -8,3 +8,4 @@ logs
 fakeQuestions.json
 fakeUsers.json
 .env
+package-lock.json
