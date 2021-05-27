@@ -1,46 +1,65 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
+  InputGroup,
+  InputGroupAddon,
+  Input,
+  Form,
+  FormGroup,
+  Button,
 } from 'reactstrap';
-import Logout from '../Logout.jsx';
+import Login from '../Login';
+import Logout from '../Logout';
 
 function Navigation() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [search, setSearch] = useState('');
+
+  const checkLogin = () => {
+    axios.get('/isLoggedIn')
+      .then((res) => {
+        setLoggedIn(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('book search result', search);
+  };
+
   return (
-    <div className="nav">
-      <Navbar className="nav-general" fixed="top">
-        <div className="nav-general-content">
-          <NavbarBrand className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
-          <form onSubmit={() => { }} className="nav-general-form">
-            <input type="text" placeholder="Search" className="nav-general-form-input" />
-          </form>
-          <div className="nav-option">
-            <a className="nav-option-item">Dashboard</a>
-            <a className="nav-option-item">Metrics</a>
-            <Logout />
-          </div>
-        </div>
-      </Navbar>
-      {/* <h2 className="nav-logo">Andes Bookclub</h2>
-      <form onSubmit={() => { }}>
-        <input type="text" placeholder="Search" />
-      </form>
-      <a className="nav-option">Dashboard</a>
-      <a className="nav-option">Metrics</a>
-      <a href="#"><img src="https://img.icons8.com/windows/64/000000/user-male-circle.png" /></a>
-      <button type="button" className="nav-signin">Sign In</button>
-      <button type="button" className="nav-getstarted">Get Started</button> */}
-    </div>
+    <Navbar className="nav-general" expand="md">
+      <NavbarBrand href="/" className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
+      <Form onSubmit={(e) => handleSubmit(e)}>
+        <FormGroup>
+          <InputGroup>
+            <Input type="text" placeholder="Search books..." name="search" onChange={(e) => setSearch(e.target.value)} />
+            <InputGroupAddon addonType="append">
+              <Button type="submit">Search</Button>
+            </InputGroupAddon>
+          </InputGroup>
+        </FormGroup>
+      </Form>
+      <Nav>
+        <NavItem>
+          <NavLink href="/dashboard">Dashboard</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="/metrics">Metrics</NavLink>
+        </NavItem>
+        { isLoggedIn ? <Logout checkLogin={checkLogin} /> : <Login checkLogin={checkLogin} /> }
+      </Nav>
+    </Navbar>
   );
 }
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'reactstrap';
-import LandingNav from './LandingNav';
+// import LandingNav from './LandingNav';
 import Footer from './Footer';
 
 // images
@@ -11,7 +11,7 @@ import graph from '../assets/img/graph.png';
 function Landing() {
   return (
     <div className="landing">
-      <LandingNav />
+      {/* <LandingNav /> */}
       <div className="hook">
         <div className="hook-left">
           <p className="hook-phrase">
