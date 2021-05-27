@@ -4,11 +4,10 @@ const db = require('../../index');
 const questionsRouter = express.Router();
 const highestQuestionsRouter = require('./highest');
 const booksQuestionsRouter = require('./bookQuestions');
-const upvoteQuestionsRouter = require('./updateVotes');
+const voteQuestionsRouter = require('./updateVotes');
 
 const questionsTopUsersRouter = require('./topUsers');
 const questionsTopQuestionsRouter = require('./topQuestions');
-
 
 // root router for questions
 questionsRouter.get('/', (req, res) => {
@@ -18,7 +17,7 @@ questionsRouter.get('/', (req, res) => {
 
 questionsRouter.use('/highest', highestQuestionsRouter);
 questionsRouter.use('/book', booksQuestionsRouter);
-questionsRouter.use('/update', upvoteQuestionsRouter);
+questionsRouter.use('/update', voteQuestionsRouter);
 questionsRouter.use('/topusers', questionsTopUsersRouter);
 questionsRouter.use('/topquestions', questionsTopQuestionsRouter);
 
