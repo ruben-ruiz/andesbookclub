@@ -5,6 +5,7 @@ import Dashboard from './components/Dashboard';
 // import Logout from './Logout';
 
 import Landing from './components/Landing';
+import QuizModal from './components/QuizModal';
 import CommunityMetrics from './components/CommunityMetrics';
 
 import BookInfo from './components/bookInfo';

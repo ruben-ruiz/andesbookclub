@@ -1,6 +1,4 @@
 import React from 'react';
-import Login from '../Login.jsx';
-import Logout from '../Logout.jsx';
 import {
   Collapse,
   Navbar,
@@ -16,6 +14,8 @@ import {
   NavbarText,
   Button
 } from 'reactstrap';
+import Login from '../Login.jsx';
+import Logout from '../Logout.jsx';
 
 function LandingNav() {
   return (
@@ -28,9 +28,7 @@ function LandingNav() {
         <div className="nav-option">
           <a className="nav-option-item">About</a>
           <a className="nav-option-item">Mission</a>
-          <Button className="nav-option-signin">Sign In</Button>
           <Login />
-          <Logout />
         </div>
       </div>
     </Navbar>
@@ -38,3 +36,22 @@ function LandingNav() {
 }
 
 export default LandingNav;
+
+// import React from ‘react’;
+// import Login from ‘../Login.jsx’;
+// import Logout from ‘../Logout.jsx’;
+// function LandingNav() {
+//   return (
+//     <div className=“nav landing”>
+//       <h2 className=“nav-logo”>Andes Bookclub</h2>
+//       <form onSubmit={() => { }}>
+//         <input type=“text” placeholder=“Search” />
+//       </form>
+//       <a className=“nav-option”>About</a>
+//       <a className=“nav-option”>Mission</a><br/>
+//       <Login />
+//       <Logout />
+//     </div>
+//   );
+// }
+// export default LandingNav;

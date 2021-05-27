@@ -25,7 +25,6 @@ function Landing() {
           Setup a schedule to refresh the material.
           Interact with a community of Ande&apos;s Bookies
         </p>
-        {/* <img className="about-img about-img_back" href="./../assets/img/reading.png" alt="img_1" /> */}
         <img className="about-img about-img_front" src={aboutImg} alt="img_2" />
       </div>
       <div className="mission">

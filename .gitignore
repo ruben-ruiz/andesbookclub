@@ -4,6 +4,7 @@ client/dist/bundle.js
 coverage
 logs
 *.log
+package-lock.json
 *.env
 fakeQuestions.json
 fakeUsers.json

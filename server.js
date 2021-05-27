@@ -8,6 +8,7 @@ const session = require('express-session');
 const users = require('./db/routes/users');
 const books = require('./db/routes/books');
 const questions = require('./db/routes/questions');
+const answers = require('./db/routes/answers');
 
 app.use(express.json());
 app.use(express.static('client/dist'));
@@ -34,6 +35,7 @@ app.get('/click', (req, res) => {
 app.use('/users', users);
 app.use('/books', books);
 app.use('/questions', questions);
+app.use('/answers', answers);
 app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
 });

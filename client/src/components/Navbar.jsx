@@ -13,6 +13,7 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+import Logout from '../Logout.jsx';
 
 function Navigation() {
   return (
@@ -26,7 +27,7 @@ function Navigation() {
           <div className="nav-option">
             <a className="nav-option-item">Dashboard</a>
             <a className="nav-option-item">Metrics</a>
-            {/* <Button className="nav-option-item">Sign In</Button> */}
+            <Logout />
           </div>
         </div>
       </Navbar>
