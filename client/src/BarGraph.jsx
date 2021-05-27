@@ -1,7 +1,7 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-const LineGraph = (props) => {
+const LineGraph = () => {
   const data = {
     labels: ['Start', '', '', '', 'Now'],
     datasets: [

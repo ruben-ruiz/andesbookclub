@@ -14,6 +14,7 @@ import BookInfo from './components/bookInfo';
 
 const App = () => (
   <div>
+    <Search />
     <Landing />
   </div>
 );

@@ -10,13 +10,13 @@ const SearchList = (props) => {
         <div id="book-each" key={book.id}>
           {
           book.volumeInfo.imageLinks
-            ? <img id="book-image" src={book.volumeInfo.imageLinks.thumbnail} />
-            : <img id="book-imgae" />
+            ? <img className="book-image" src={book.volumeInfo.imageLinks.thumbnail} />
+            : <img className="book-imgae" />
           }
-          <div id="book-title">{book.volumeInfo.title}</div>
-          <div id="book-author">{book.volumeInfo.authors}</div>
-          <div id="book-author">{book.volumeInfo.publishedDate}</div>
-          <div id="book-category">{book.volumeInfo.categories}</div>
+          <div className="book-title">{book.volumeInfo.title}</div>
+          <div className="book-author">{book.volumeInfo.authors}</div>
+          <div className="book-author">{book.volumeInfo.publishedDate}</div>
+          <div className="book-category">{book.volumeInfo.categories}</div>
         </div>
       ))}
     </div>
