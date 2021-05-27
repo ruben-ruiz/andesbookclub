@@ -3,6 +3,7 @@ import axios from 'axios';
 import QuizView from './QuizView';
 
 function QuizModal(props) {
+  const { bookId } = props;
   const [start, changeStart] = useState(false);
   const [questionSets, updateSets] = useState([]);
   const [currentSet, changeSet] = useState({});
@@ -33,12 +34,11 @@ function QuizModal(props) {
   };
 
   useEffect(() => {
-    axios.get('/questions')
+    axios.get(`/questions/book/${bookId}`)
       .then((data) => {
         updateSets(data.data);
       })
       .catch((err) => console.log(err));
-    // use updateSets
   }, []);
 
   const view = !start ? <button type="button" className="start-quiz question-vote-choice" onClick={e => changeStart(!start)}>start quiz</button> : <QuizView set={currentSet} prev={handlePrev} next={handleNext} list={questionSets} answers={answers} />;

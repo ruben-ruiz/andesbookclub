@@ -8,7 +8,6 @@ answerRouter.get('/', (req, res) => {
 });
 answerRouter.post('/', (req, res) => {
   const { body } = req;
-  console.log(body);
 
   body.answers.forEach((answer) => {
     db.query(`

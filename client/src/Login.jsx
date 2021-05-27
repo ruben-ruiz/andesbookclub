@@ -11,8 +11,8 @@ function Login() {
 
     axios({
       method: 'POST',
-      url: '/users',
-      data: { tokenId: res.tokenId },
+      url: '/users/login',
+      data: { tokenId: res.tokenId }
     }).then((res) => {
       console.log(res);
     }, (err) => {
