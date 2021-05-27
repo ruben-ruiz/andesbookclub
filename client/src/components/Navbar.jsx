@@ -1,46 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
-  Collapse,
   Navbar,
-  NavbarToggler,
   NavbarBrand,
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText
 } from 'reactstrap';
+import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
+import Login from '../Login.jsx';
 import Logout from '../Logout.jsx';
 
 function Navigation() {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+  const checkLogin = () => {
+    axios.get('/isLoggedIn')
+    .then(res => {
+      console.log('checkedLogginData: ', res.data);
+      setLoggedIn(res.data);
+    })
+    .catch(err => console.log(err));
+  };
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
+  // const che = () => {
+  //   checkLogin();
+  // };
+  console.log('isLoggedIn: ', isLoggedIn);
   return (
-    <div className="nav">
-      <Navbar className="nav-general" fixed="top">
-        <div className="nav-general-content">
-          <NavbarBrand className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
-          <form onSubmit={() => { }} className="nav-general-form">
-            <input type="text" placeholder="Search" className="nav-general-form-input" />
-          </form>
-          <div className="nav-option">
-            <a className="nav-option-item">Dashboard</a>
-            <a className="nav-option-item">Metrics</a>
-            <Logout />
-          </div>
-        </div>
-      </Navbar>
-      {/* <h2 className="nav-logo">Andes Bookclub</h2>
-      <form onSubmit={() => { }}>
-        <input type="text" placeholder="Search" />
+    <Navbar className="nav-general" expand="md">
+      <NavbarBrand href="/" className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
+      <form onSubmit={() => { }} className="nav-general-form">
+        <input type="text" placeholder="Search" className="nav-general-form-input" />
       </form>
-      <a className="nav-option">Dashboard</a>
-      <a className="nav-option">Metrics</a>
-      <a href="#"><img src="https://img.icons8.com/windows/64/000000/user-male-circle.png" /></a>
-      <button type="button" className="nav-signin">Sign In</button>
-      <button type="button" className="nav-getstarted">Get Started</button> */}
-    </div>
+      <Nav>
+        <NavItem>
+          <NavLink href="/dashboard">Dashboard</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="/metrics">Metrics</NavLink>
+        </NavItem>
+        { isLoggedIn ? <Logout checkLogin={checkLogin} /> : <Login checkLogin={checkLogin} /> }
+      </Nav>
+    </Navbar>
   );
 }
 
