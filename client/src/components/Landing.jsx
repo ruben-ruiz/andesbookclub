@@ -32,7 +32,6 @@ function Landing() {
           <br />
           Contribute questions for community competitions.
         </p>
-        {/* <img className="about-img about-img_back" href="./../assets/img/reading.png" alt="img_1" /> */}
         <img className="about-img about-img_front" src={aboutImg} alt="img_2" />
       </div>
       <div className="mission">
