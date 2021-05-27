@@ -814,11 +814,15 @@ const QuizzesList = ({ toggleQuiz }) => {
                         axios.get(`books/isCompleted/${book.bookid}`)
                             .then((res) => {
                                 console.log(res.data);
-                                if (!res.data) {
-                                    container.push(book);
-                                }
-                                if (i === data.data.length - 1) {
-                                    callback(container);
+                                if (!res.data.length) {
+                                    if (!res.data.isCompleted) {
+                                        container.push(book);
+                                    }
+                                    if (i === data.data.length - 1) {
+                                        callback(container);
+                                    }
+                                } else {
+                                    callback([{ noBook: true }]);
                                 }
                             })
                     })
@@ -838,6 +842,11 @@ const QuizzesList = ({ toggleQuiz }) => {
             {quizzes ?
                 <Carousel className="quizzes-section" >
                     {quizzes.map((quiz, index) => {
+                        if (quiz.noBook) {
+                            return <div key={index}>
+                                <h3>Add books!</h3>
+                            </div>
+                        }
                         console.log(index)
                         // let volume = quiz.volumeInfo;
                         // let title = volume.title;
