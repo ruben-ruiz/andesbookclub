@@ -2,6 +2,7 @@ import React from 'react';
 import {
   ListGroup, ListGroupItem,
 } from 'reactstrap';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import Image from './MainInfo';
@@ -14,12 +15,15 @@ class bookInfo extends React.Component {
       completedReading: true,
     };
     this.showQuestions = this.showQuestions.bind(this);
+    this.routeParam = props.match.params.bookid;
   }
 
   componentDidMount() {
+    console.log('the thing', this.routeParam);
+
     axios({
       method: 'get',
-      url: 'https://www.googleapis.com/books/v1/volumes/qtsTH7ekvVYC',
+      url: `https://www.googleapis.com/books/v1/volumes/${this.routeParam}`,
     })
       .then((response) => {
         // console.log('this is the response: ', response.data.volumeInfo);
