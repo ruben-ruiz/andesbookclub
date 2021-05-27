@@ -1,22 +1,36 @@
 import React from 'react';
-import ReadingList from './components/ReadingList';
-import Search from './Search';
-
+import { Switch, Route } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
 // import Login from './Login';
 // import Logout from './Logout';
-import axios from 'axios';
-
+import Search from './Search';
+import SearchResult from './SearchResult';
 import Landing from './components/Landing';
+import QuizModal from './components/QuizModal';
+import CommunityMetrics from './components/CommunityMetrics';
 
 import BookInfo from './components/bookInfo';
 
 // eslint-disable-next-line react/prefer-stateless-function
-
-const App = () => (
-  <div>
-    <Search />
-    <Landing />
-  </div>
-);
+class App extends React.Component {
+  render() {
+    return (
+      <Switch>
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/metrics">
+          <CommunityMetrics />
+        </Route>
+        <Route path="/book/:id/info">
+          <BookInfo />
+        </Route>
+        <Route path="/">
+          <Landing />
+        </Route>
+      </Switch>
+    );
+  }
+}
 
 export default App;

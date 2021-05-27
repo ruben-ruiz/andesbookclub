@@ -9,9 +9,9 @@ class Search extends React.Component {
     super();
     this.state = {
       title: '',
-      enter: false,
       total: 0,
       items: [],
+      itemString: '',
     };
     this.handleSearchInput = this.handleSearchInput.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
@@ -25,37 +25,24 @@ class Search extends React.Component {
 
   handleEnter(e) {
     const { title } = this.state;
-    if (e.key === 'Enter') {
-      this.setState({
-        enter: true,
-      });
+    if (e.key === 'Enter' && title.length > 0) {
       axios.get(`/books/${title}`, { params: 1 })
         .then((response) => {
           this.setState({
             total: response.data.totalItems,
             items: response.data.items,
+            itemString: JSON.stringify(response.data.items),
           });
-        });
+        })
+        .catch();
     }
-  }
-
-  renderView() {
-    const { enter } = this.state;
-    const { total } = this.state;
-    const { items } = this.state;
-    const { title } = this.state;
-    // const { items } = JSON.stringify(info.data);
-    if (enter) {
-      return <SearchResult data={total} title={title} items={items} />;
-    }
-    return (
-      <div>{' '}</div>
-    );
   }
 
   render() {
+    const { total } = this.state;
+    const { items } = this.state;
     const { title } = this.state;
-    const { enter } = this.state;
+    const { itemString } = this.state;
     return (
       <div className="search-bar">
         <Input
@@ -66,8 +53,8 @@ class Search extends React.Component {
           placeholder="Search"
         />
         {
-          enter
-            ? this.renderView(title)
+          total !== 0 && title
+            ? <SearchResult data={total} title={title} items={items} itemString={itemString} />
             : null
         }
       </div>

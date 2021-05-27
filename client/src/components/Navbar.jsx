@@ -13,6 +13,8 @@ import {
   DropdownItem,
   NavbarText
 } from 'reactstrap';
+import Search from '../Search';
+import Logout from '../Logout.jsx';
 
 function Navigation() {
   return (
@@ -20,13 +22,11 @@ function Navigation() {
       <Navbar className="nav-general" fixed="top">
         <div className="nav-general-content">
           <NavbarBrand className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
-          <form onSubmit={() => { }} className="nav-general-form">
-            <input type="text" placeholder="Search" className="nav-general-form-input" />
-          </form>
+          <Search />
           <div className="nav-option">
             <a className="nav-option-item">Dashboard</a>
             <a className="nav-option-item">Metrics</a>
-            {/* <Button className="nav-option-item">Sign In</Button> */}
+            <Logout />
           </div>
         </div>
       </Navbar>
