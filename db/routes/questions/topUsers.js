@@ -5,7 +5,7 @@ const db = require('../../index');
 const questionsTopUsersRouter = express.Router();
 
 questionsTopUsersRouter.get('/', (req, res) => {
-  db.query(`SELECT users.profileName, count(questions.questionId), sum(questions.relevance) as sum
+  db.query(`SELECT users.profileName, count(questions.questionId), sum(questions.upvotes) as sum
   FROM users
   JOIN questions ON users.userId = questions.createdBy
   GROUP BY users.userId

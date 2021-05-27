@@ -3,36 +3,34 @@ import { Switch, Route } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 // import Login from './Login';
 // import Logout from './Logout';
-
+import Search from './Search';
+import SearchResult from './SearchResult';
 import Landing from './components/Landing';
-import QuizModal from './components/QuizModal';
 import CommunityMetrics from './components/CommunityMetrics';
+import Navbar from './components/Navbar';
 
 import BookInfo from './components/bookInfo';
 
-// eslint-disable-next-line react/prefer-stateless-function
-class App extends React.Component {
-  render() {
-    return (
-      <div>
-        <Dashboard />
-      </div>
-      // <Switch>
-      //   <Route path="/dashboard">
-      //     <Dashboard />
-      //   </Route>
-      //   <Route path="/metrics">
-      //     <CommunityMetrics />
-      //   </Route>
-      //   <Route path="/book/:id/info">
-      //     <BookInfo />
-      //   </Route>
-      //   <Route path="/">
-      //     <Landing />
-      //   </Route>
-      // </Switch>
-    );
-  }
+const App = () => {
+  return (
+    <>
+      <Navbar />
+      <Switch>
+        <Route path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route path="/metrics">
+          <CommunityMetrics />
+        </Route>
+        <Route path="/bookInfo">
+          <BookInfo />
+        </Route>
+        <Route path="/">
+          <Landing />
+        </Route>
+      </Switch>
+    </>
+  );
 }
 
 export default App;

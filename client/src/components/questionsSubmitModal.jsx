@@ -12,7 +12,7 @@ const QuestionsModal = (props) => {
   const toggleNo = () => setModalNo(!modalNo);
 
   // eslint-disable-next-line react/prop-types
-  const { modalOrAlert } = props;
+  const { modalOrAlert, bookId } = props;
   return (
     <div>
       {modalOrAlert ? <Button color="warning" onClick={toggle}>Submit a Question!</Button>
@@ -20,12 +20,8 @@ const QuestionsModal = (props) => {
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Submit your question!</ModalHeader>
         <ModalBody>
-          <SubmitQuestion />
+          <SubmitQuestion bookId={bookId} />
         </ModalBody>
-        <ModalFooter>
-          <Button color="primary" onClick={toggle}>Submit</Button>
-          <Button color="secondary" onClick={toggle}>Cancel</Button>
-        </ModalFooter>
       </Modal>
       <Modal isOpen={modalNo} toggle={toggleNo}>
         <ModalHeader toggle={toggleNo}>Oops! Looks like there was a problem...</ModalHeader>
