@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from './util/refreshToken';
 
@@ -26,7 +26,7 @@ function Login( { checkLogin }) {
   };
 
   return (
-    <div>
+    <>
       <GoogleLogin
         clientId={clientId}
         buttonText="Login"
@@ -36,7 +36,7 @@ function Login( { checkLogin }) {
         style={{ marginTop: '100px' }}
         isSignedIn={true}
         />
-    </div>
+    </>
   );
 }
 

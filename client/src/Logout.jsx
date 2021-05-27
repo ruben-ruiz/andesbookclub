@@ -20,13 +20,13 @@ function Logout( { checkLogin } ) {
   };
 
   return (
-    <div>
+    <>
       <GoogleLogout
         clientId={clientId}
         buttonText="Logout"
         onLogoutSuccess={onSuccess}
       ></GoogleLogout>
-    </div>
+    </>
   );
 }
 
