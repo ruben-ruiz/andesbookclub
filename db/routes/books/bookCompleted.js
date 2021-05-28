@@ -14,9 +14,12 @@ bookIsCompletedRouter.get('/:bookId', (req, res) => {
     JOIN userBooks ON userBooks.bookId = books.bookId
     WHERE books.bookId = '${bookId}' AND userBooks.userId = ${req.session.userId}`)
       .then((dbRes) => {
-        const { iscompleted } = dbRes.rows[0];
-        console.log(iscompleted);
-        res.send(iscompleted);
+        if (dbRes.rows.length === 0) {
+          res.status(200).send(false);
+        } else {
+          const { iscompleted } = dbRes.rows[0];
+          res.send(iscompleted);
+        }
       });
   }
 });

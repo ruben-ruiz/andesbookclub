@@ -25,12 +25,12 @@ const Dashboard = () => {
     <div className="dashboard">
       <QuizzesList />
       <ReadingList
-        updateBooks={updateBooks}
+        getBooks={getBooks}
         readingBooks={books.filter((book) => !book.iscompleted)}
         books={books}
       />
       <CompletedList
-        updateBooks={updateBooks}
+        getBooks={getBooks}
         completedBooks={books.filter((book) => book.iscompleted)}
         books={books}
       />
