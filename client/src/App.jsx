@@ -5,7 +5,7 @@ import Search from './Search';
 import Landing from './components/Landing';
 import CommunityMetrics from './components/CommunityMetrics';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 import BookInfo from './components/bookInfo';
 
 const App = () => (
@@ -26,7 +26,6 @@ const App = () => (
         <Landing />
       </Route>
     </Switch>
-    <Footer />
   </>
 );
 
