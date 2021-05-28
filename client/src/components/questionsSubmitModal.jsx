@@ -15,7 +15,7 @@ const QuestionsModal = (props) => {
   const { modalOrAlert, bookId } = props;
   return (
     <div>
-      {modalOrAlert ? <Button color="warning" onClick={toggle}>Submit a Question!</Button>
+      {modalOrAlert === true ? <Button color="warning" onClick={toggle}>Submit a Question!</Button>
         : <Button color="warning" onClick={toggleNo}>Submit a Question!</Button>}
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Submit your question!</ModalHeader>
