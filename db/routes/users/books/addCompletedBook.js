@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const db = require('../../../index');
 
-const addReadingBookRouter = express.Router();
+const addCompletedBookRouter = express.Router();
 
 function insertBook(bookid, userId) {
   return bookApi(bookid)
@@ -30,7 +30,7 @@ function insertBook(bookid, userId) {
           VALUES ${categData}
           ON CONFLICT DO NOTHING;
 
-          INSERT INTO userBooks (userId, bookId)
+          INSERT INTO userBooks (userId, bookId, isCompleted)
           VALUES ${userData}
           ON CONFLICT DO NOTHING;
       COMMIT;
@@ -56,7 +56,7 @@ function bookData(bookObj, userId) {
   };
   const authorData = bookInfo.authors ? bookInfo.authors.map((author) => "('" + author + "','" + bookData.bookId + "')").join(', ') : "('','"+bookData.bookId + "')";
   const categData = bookInfo.categories ? bookInfo.categories.map((category) => "('" + category + "','" + bookData.bookId + "')").join(', ') : "('','"+bookData.bookId + "')";
-  const userData = "(" + userId + ", '" + bookData.bookId + "')";
+  const userData = "(" + userId + ", '" + bookData.bookId + "', true)";
   const bookCols = Object.keys(bookData).join(', ');
   const bookVals = Object.values(bookData).map((val) => typeof val === 'string' ? "$$" + val + "$$" : val).join(', ');
   // console.log(bookVals);
@@ -69,7 +69,7 @@ function bookData(bookObj, userId) {
   };
 };
 
-addReadingBookRouter.post('/:bookId', (req, res) => {
+addCompletedBookRouter.post('/:bookId', (req, res) => {
   let bookId = req.params.bookId;
   let userId = req.session.userId;
   console.log('userId, bookId ', userId, bookId);
@@ -83,4 +83,4 @@ addReadingBookRouter.post('/:bookId', (req, res) => {
     });
 });
 
-module.exports = addReadingBookRouter;
+module.exports = addCompletedBookRouter;

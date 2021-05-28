@@ -9,7 +9,7 @@ const BookStatus = ({ className, getBooks = () => { }, book, status, setComplete
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const deleteBook = (book) => {
-    axios.delete(`/users/books/${book.bookid}`)
+    axios.delete(`/users/books/remove/${book.bookid}`)
       .then((res) => {
         console.log('book deleted', res);
         getBooks();
@@ -36,21 +36,24 @@ const BookStatus = ({ className, getBooks = () => { }, book, status, setComplete
           });
       }
     } else {
+      let z = 0;
       if (val === 'Remove') {
         deleteBook(book);
         setCompletedReading('available');
-      } else if (val === 'Reading' && status !== 'Reading') {
-        axios.put(`/users/books/setReading/${book.bookid}`)
+      } else if (val === 'Reading') {
+        axios.put(`/users/books/setReading/${book.bookId}`)
           .then((res) => {
             console.log('book added to reading list', res.data);
+            setCompletedReading('Reading');
           })
           .catch((error) => {
             console.log('there was an error in Reading put: ', error);
           });
-      } else if (val === 'Completed' && status !== 'Completed') {
-        axios.put(`/users/books/setCompleted/${book.bookid}`)
+        } else if (val === 'Completed') {
+          axios.put(`/users/books/setCompleted/${book.bookId}`)
           .then((res) => {
             console.log('book added to completed list', res.data);
+            setCompletedReading('Completed');
           })
           .catch((error) => {
             console.log('there was an error in Completed put: ', error);
