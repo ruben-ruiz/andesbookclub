@@ -1,4 +1,11 @@
 /* Dashboard */
+.dashboard {
+  height: calc(100vh - 8rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* ========================= */
 /*///////////// WIDGETS ////////////////*/
 
