@@ -148,10 +148,7 @@ a {
 }
 
 .cm-top-rated-user {
-<<<<<<< HEAD
-=======
   display: flex;
->>>>>>> main
   height: 50px;
   width: auto;
   border-bottom: 1px solid grey;
