@@ -8,8 +8,9 @@ const SearchList = (props) => {
 
   return (
     <div className="search-result">
-      {books.map((book) => (
-        <div className="book-each" key={book.id} onClick={() => { history.push(`/bookInfo/${book.id}`); }}>
+      {books.map((book) => {
+        return (
+          <div className="book-each" key={book.id} onClick={() => { history.push(`/bookInfo/${book.id}`); }}>
           {
           book.volumeInfo.imageLinks
             ? <img className="book-image" src={book.volumeInfo.imageLinks.thumbnail} />
@@ -22,7 +23,8 @@ const SearchList = (props) => {
             <div className="book-category">Category: {book.volumeInfo.categories}</div>
           </div>
         </div>
-      ))}
+        )
+      })}
     </div>
   );
 };
