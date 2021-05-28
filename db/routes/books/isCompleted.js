@@ -5,7 +5,6 @@ const bookIsCompletedRouter = express.Router();
 
 bookIsCompletedRouter.get('/:bookId', (req, res) => {
   const { bookId } = req.params;
-<<<<<<< HEAD:db/routes/books/isCompleted.js
   if (!req.session.userId) {
     res.send(false);
   } else {
@@ -23,16 +22,6 @@ bookIsCompletedRouter.get('/:bookId', (req, res) => {
         }
       });
   }
-=======
-  db.query(`
-  SELECT *
-  FROM userbooks WHERE userid = ${1} AND bookid = '${bookId}'
-  `)
-    .then((dbRes) => {
-      res.send(dbRes.rows);
-    })
-    .catch(err => res.sendStatus(404));
->>>>>>> main:db/routes/books/bookCompleted.js
 });
 
 module.exports = bookIsCompletedRouter;
