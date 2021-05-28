@@ -62,6 +62,7 @@ class CommunityMetrics extends React.Component {
       this.setState({
         users: responses[0].data,
         questions: responses[1].data,
+        userStats: [Number(responses[2].data[0].count), 0, 0, 'N/A', 0, 'N/A']
       });
     }).catch((err) => {
       console.log(err);
