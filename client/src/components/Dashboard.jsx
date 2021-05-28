@@ -14,7 +14,7 @@ const Dashboard = () => {
   const getBooks = () => {
     axios.get('/users/books')
       .then((res) => {
-        console.log('users books: ', res.data);
+        // console.log('users books: ', res.data);
         updateBooks(res.data);
       }).catch((err) => {
         console.log('error: ', err);

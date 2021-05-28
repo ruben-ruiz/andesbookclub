@@ -14,6 +14,10 @@ class SearchResult extends React.Component {
     this.setCurrentPage = this.setCurrentPage.bind(this);
   }
 
+  componentDidMount() {
+    this.setCurrentPage({ selected: 0 });
+  }
+
   setInitialPage() {
     const { title } = this.props;
     axios.get(`/books/${title}`, { params: 1 })
