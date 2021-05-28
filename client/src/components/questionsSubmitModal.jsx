@@ -20,7 +20,7 @@ const QuestionsModal = (props) => {
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Submit your question!</ModalHeader>
         <ModalBody>
-          <SubmitQuestion bookId={bookId} />
+          <SubmitQuestion toggle={toggle} bookId={bookId} />
         </ModalBody>
       </Modal>
       <Modal isOpen={modalNo} toggle={toggleNo}>

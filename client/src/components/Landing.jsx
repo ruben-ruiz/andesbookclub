@@ -1,5 +1,5 @@
 import React from 'react';
-import Footer from './Footer';
+// import Footer from './Footer';
 
 // images
 import hookImg from '../assets/img/reading.png';
@@ -42,7 +42,7 @@ function Landing() {
           Optimize your retention and make the books you read count!
         </p>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

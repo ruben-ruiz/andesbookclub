@@ -88,11 +88,25 @@ a {
 /* -------------------------- */
 .navbar {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   background-color: rgb(46, 46, 77);
   padding: .5rem;
-  height: 8rem;
+  height: 6rem;
   border-bottom: solid 2px white;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.company {
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: inherit;
+  margin-right: 1rem;
 }
 
 .search-form {
@@ -142,6 +156,10 @@ a {
   font-size: 1.5rem;
   color: rgb(255, 217, 0);
   ;
+}
+
+.google-auth {
+  background: yellow;
 }
 
 /* [ Community Metrics ] */
@@ -278,6 +296,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgb(46, 46, 77);
+  color: white;
 }
 
 .footer-contact {
