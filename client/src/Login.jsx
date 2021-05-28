@@ -25,15 +25,28 @@ function Login( { checkLogin }) {
     refreshTokenSetup(res);
   };
 
+  const inStyle = {
+    width: '4rem',
+    outline: 'none',
+    color: 'white',
+    background: 'none',
+    fontSize: '1.5rem',
+    border: 'none',
+    cursor: 'pointer',
+  };
+
   return (
     <>
       <GoogleLogin
+        className="google-auth"
         clientId={clientId}
         buttonText="Login"
         onSuccess={onSuccess}
         onFailure={err => (console.log('fail', err))}
         cookiePolicy={'single_host_origin'}
-        style={{ marginTop: '100px' }}
+        render={renderProps => (
+          <button onClick={renderProps.onClick} style={inStyle}>Login</button>
+        )}
         isSignedIn={true}
         />
     </>
