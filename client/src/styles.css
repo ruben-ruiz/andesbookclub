@@ -73,15 +73,14 @@ body {
   .card-body {
     height: 100%;
   }
-
   .btn-secondary {
     /* color: #fff; */
     background-color: #ffffff;
     border-color: #b3bdc5;
-    font-size: 12px;
+    font-size: 13px;
     color: #252627;
+    padding: 9px;
 }
-
 /*///////////// COMPONENTS ////////////////*/
 
 .reading-section,
@@ -256,7 +255,7 @@ a {
 }
 
 .hook-phrase {
-  font-size: 3em;
+  font-size: 2.8em;
 }
 
 .hook-btn {
@@ -277,7 +276,7 @@ a {
 .mission-phrase {
   align-self: center;
   width: 40%;
-  font-size: 2.5em;
+  font-size: 2em;
   white-space: pre-wrap;
 }
 

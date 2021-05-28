@@ -2,11 +2,18 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 function QuizView(props) {
-  let { set, prev, next, list, answers } = props;
+  let { set, prev, next, list, answers, toggleQuiz } = props;
   const choices = [];
-
+  console.log(list);
   if (!Object.keys(set).length) {
     set = list[0];
+    if (!set) {
+      return (
+        <div>
+          <h2>No Questions Available</h2>
+        </div>
+      );
+    }
   }
 
   const responseBody = {

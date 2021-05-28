@@ -1,13 +1,15 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const SearchList = (props) => {
   const data = props;
   const books = data.items;
+  const history = useHistory();
 
   return (
     <div className="search-result">
       {books.map((book) => (
-        <div className="book-each" key={book.id}>
+        <div className="book-each" key={book.id} onClick={() => { history.push(`/bookInfo/${book.id}`); }}>
           {
           book.volumeInfo.imageLinks
             ? <img className="book-image" src={book.volumeInfo.imageLinks.thumbnail} />
