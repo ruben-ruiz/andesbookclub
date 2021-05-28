@@ -14,7 +14,6 @@ const Dashboard = () => {
   const getBooks = () => {
     axios.get('/users/books')
       .then((res) => {
-        console.log('users books: ', res.data);
         updateBooks(res.data);
       }).catch((err) => {
         console.log('error: ', err);
@@ -24,7 +23,6 @@ const Dashboard = () => {
   const getQuizzes = () => {
     axios.get('/users/quizzes')
       .then((res) => {
-        console.log('users quizzes: ', res.data);
         updateQuizzes(res.data);
       }).catch((err) => {
         console.log('error: ', err);
@@ -34,9 +32,8 @@ const Dashboard = () => {
     toggleModal(jsx);
   }
 
-  function toggleQuiz(book) {
-    console.log(book);
-    toggleModal(<QuizModal bookId={book.bookid} toggleQuiz={closeQuiz} />);
+  function toggleQuiz(bookid) {
+    toggleModal(<QuizModal bookId={bookid} toggleQuiz={closeQuiz} />);
   }
 
   useEffect(() => {
@@ -46,7 +43,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <QuizzesList quizzes={quizzes} updateQuizzes={updateQuizzes} toggleQuiz={toggleQuiz} />
+      <QuizzesList quizzes={quizzes} toggleQuiz={toggleQuiz} />
       {modal}
       <LineGraph />
       <ReadingList
