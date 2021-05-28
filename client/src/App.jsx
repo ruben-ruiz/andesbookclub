@@ -20,7 +20,7 @@ const App = () => (
       <Route path="/metrics">
         <CommunityMetrics />
       </Route>
-      <Route path="/bookInfo/:bookId" component={BookInfo} />
+      <Route path="/bookInfo/:bookid" component={BookInfo} />
       <Route path="/search">
         <Search />
       </Route>

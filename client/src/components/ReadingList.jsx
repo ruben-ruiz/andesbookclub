@@ -3,7 +3,7 @@ import axios from 'axios';
 import Book from './Book';
 import Carousel from '../widgets/Carousel';
 
-const ReadingList = ({ readingBooks, updateBooks, books }) => (
+const ReadingList = ({ readingBooks, getBooks, books }) => (
   <div className="reading-list">
     <h2>Currently Reading</h2>
     {readingBooks.length > 0
@@ -11,10 +11,11 @@ const ReadingList = ({ readingBooks, updateBooks, books }) => (
         <Carousel className="reading-section">
           { readingBooks.map((book, index) => (
             <Book
+              status="Reading"
               key={index}
               book={book}
               index={index}
-              updateBooks={updateBooks}
+              getBooks={getBooks}
             />
           ))}
         </Carousel>

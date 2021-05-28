@@ -4,7 +4,7 @@ const booksRouter = express.Router();
 const db = require('../../index');
 const bookidsRouter = require('./booksId');
 const bookTitleRouter = require('./booksTitle');
-const bookIsCompletedRouter = require('./bookCompleted');
+const bookIsCompletedRouter = require('./isCompleted');
 const updateReadingRouter = require('./updateReading');
 // root router for books
 

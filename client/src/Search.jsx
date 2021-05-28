@@ -77,22 +77,3 @@ class Search extends React.Component {
 }
 
 export default Search;
-
-// const handleSubmit = (e) => {
-//   e.preventDefault();
-//   console.log('book search result', search);
-// };
-
-// return (
-//   <Navbar expand="md">
-//     <NavbarBrand href="/" className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
-{/* <Form onSubmit={(e) => handleSubmit(e)}>
-<FormGroup>
-  <InputGroup>
-    <Input href="/search" type="text" placeholder="Search books..." name="search" onChange={(e) => setSearch(e.target.value)} />
-    <InputGroupAddon addonType="append">
-      <Button href="/search" type="submit">Search</Button>
-    </InputGroupAddon>
-  </InputGroup>
-</FormGroup>
-</Form> */}
