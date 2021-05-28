@@ -60,7 +60,7 @@ const bookInfo = (props) => {
   return (
     <div>
       <Info data={dataArr} />
-      <BookStatus book={book} status={status} />
+      <BookStatus book={book} status={status} setCompletedReading={setCompletedReading} />
       <ListGroup>
         <ListGroupItem>
           Publish Date:

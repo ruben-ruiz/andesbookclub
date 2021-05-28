@@ -19,7 +19,7 @@ const SearchList = (props) => {
           <div className="book-text-info">
             <div className="book-title">{book.volumeInfo.title}</div>
             <div className="book-author">{book.volumeInfo.authors}</div>
-            <div className="book-published">{book.volumeInfo.publishedDate.slice(0, 4)}</div>
+            <div className="book-published">{book.volumeInfo.publishedDate ? book.volumeInfo.publishedDate.slice(0, 4) : ''}</div>
             <div className="book-category">Category: {book.volumeInfo.categories}</div>
           </div>
         </div>
