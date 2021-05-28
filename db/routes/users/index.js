@@ -11,6 +11,7 @@ const userLoginRouter = require('./login');
 const userLogoutRouter = require('./logout');
 const userStatsRouter = require('./userStats')
 const userBooksRouter = require('./books');
+const userQuizzesRouter = require('./quizzes');
 
 // root router for users
 usersRouter.get('/', async (req, res) => {
@@ -20,5 +21,6 @@ usersRouter.use('/login', userLoginRouter);
 usersRouter.use('/logout', userLogoutRouter);
 usersRouter.use('/userStats', userStatsRouter);
 usersRouter.use('/books', userBooksRouter);
+usersRouter.use('/quizzes', userQuizzesRouter);
 
 module.exports = usersRouter;

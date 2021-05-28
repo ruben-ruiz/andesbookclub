@@ -16,6 +16,7 @@ import {
 import Search from '../Search';
 import Logout from '../Logout.jsx';
 import Login from '../Login';
+import logo from '../assets/img/logo.png';
 
 function Navigation() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -40,7 +41,10 @@ function Navigation() {
 
   return (
     <Navbar expand="md">
-      <NavbarBrand href="/" className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
+      <div className="company">
+        <img className="logo" src={logo} alt="mountain-logo" />
+        <NavbarBrand href="/" className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
+      </div>
       {/* <Form onSubmit={(e) => handleSubmit(e)}>
         <FormGroup>
           <InputGroup>

@@ -12,16 +12,16 @@ class SubmitQuestion extends React.Component {
     this.onChangeAnswer = this.onChangeAnswer.bind(this);
   }
 
-  onSubmitQuestion(e) {
+  onSubmitQuestion() {
     const {
       answerOne, answerTwo, answerThree, answerFour, correctAnswer, question,
     } = this.state;
-    const { bookId } = this.props;
+    const { bookId, toggle } = this.props;
     const data = [answerOne, answerTwo, answerThree, answerFour, correctAnswer, question, bookId];
-    e.preventDefault();
     axios.post('/questions', data)
       .then((response) => {
         console.log(response);
+        toggle();
       });
   }
 
