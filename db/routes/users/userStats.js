@@ -32,7 +32,7 @@ userStatsRouter.get('/questions', (req, res) => {
 })
 
 userStatsRouter.get('/topquestion', (req, res) => {
-  db.query(`SELECT questions.questionBody FROM questions JOIN users on questions.createdBy = users.userId WHERE users.userId = ${req.session.userId} ORDER by upvotes DESC`)
+  db.query(`SELECT questions.questionBody FROM questions JOIN users on questions.createdBy = users.userId WHERE users.userId = ${req.session.userId} ORDER by upvotes DESC LIMIT 1`)
   .then(data => {res.send(data.rows)})
 })
 
