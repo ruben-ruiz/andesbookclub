@@ -1,6 +1,7 @@
 const express = require('express');
-const db = require('../../index');
+const db = require('../../../index');
 
+const addReadingBookRouter = require('./addReadingBook');
 const userBooksRouter = express.Router();
 
 userBooksRouter.get('/', (req, res) => {
@@ -16,5 +17,8 @@ userBooksRouter.get('/', (req, res) => {
     res.status(500).send(err);
   });
 });
+
+// userBooksRouter.use('/:bookId', someRouter);
+userBooksRouter.use('/addReadingBook', addReadingBookRouter);
 
 module.exports = userBooksRouter;

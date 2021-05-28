@@ -4,13 +4,13 @@ import {
 } from 'reactstrap';
 import axios from 'axios';
 
-const BookStatus = ({ className, getBooks = () => {}, book, status, setCompletedReading = () => {}}) => {
+const BookStatus = ({ className, getBooks = () => { }, book, status, setCompletedReading = () => { } }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
   const deleteBook = (book) => {
     axios.delete(`/users/books/${book.bookid}`)
-      .then((res)=> {
+      .then((res) => {
         console.log('book deleted', res);
         getBooks();
       }).catch((err) => {
@@ -21,45 +21,46 @@ const BookStatus = ({ className, getBooks = () => {}, book, status, setCompleted
   const handleChange = (val) => {
     if (status === 'available') {
       if (val === 'Reading') {
-        axios.post(`/users/books/addReadingBook/${bookId}`)
+        axios.post(`/users/books/addReadingBook/${book.bookId}`)
           .then(() => {
             setCompletedReading(false);
           }).catch((err) => {
             console.log(err);
           });
       } else {
-        axios.post(`/users/books/addCompletedBook/${bookId}`)
+        axios.post(`/users/books/addCompletedBook/${book.bookId}`)
           .then(() => {
             setCompletedReading(true);
           }).catch((err) => {
             console.log(err);
           });
       }
-    } else { //this means that status is either 'Completed' or 'Reading'
+    } else {
       if (val === 'Remove') {
         deleteBook(book);
         setCompletedReading('available');
       } else if (val === 'Reading' && status !== 'Reading') {
         axios.put(`/users/books/setReading/${book.bookid}`)
-        .then((res) => {
-          console.log('book added to reading list', res.data);
-        })
-        .catch((error) => {
-          console.log('there was an error in Reading put: ', error);
-        });
+          .then((res) => {
+            console.log('book added to reading list', res.data);
+          })
+          .catch((error) => {
+            console.log('there was an error in Reading put: ', error);
+          });
       } else if (val === 'Completed' && status !== 'Completed') {
         axios.put(`/users/books/setCompleted/${book.bookid}`)
-        .then((res) => {
-          console.log('book added to completed list', res.data);
-        })
-        .catch((error) => {
-          console.log('there was an error in Completed put: ', error);
-        });
+          .then((res) => {
+            console.log('book added to completed list', res.data);
+          })
+          .catch((error) => {
+            console.log('there was an error in Completed put: ', error);
+          });
       }
-    };
-    console.log('status: ', status);
+    }
+  };
+  console.log('status: ', status);
 
-    return (
+  return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle} className={className}>
       <DropdownToggle caret>
         {status === 'available' ? 'Add to Reading' : status}
@@ -67,7 +68,7 @@ const BookStatus = ({ className, getBooks = () => {}, book, status, setCompleted
       <DropdownMenu>
         <DropdownItem onClick={() => handleChange('Reading')}>Reading</DropdownItem>
         <DropdownItem onClick={() => handleChange('Completed')}>Completed</DropdownItem>
-        {status !== 'available' ? <DropdownItem onClick={() => handleChange('Remove')}>Delete</DropdownItem> : null }
+        {status !== 'available' ? <DropdownItem onClick={() => handleChange('Remove')}>Delete</DropdownItem> : null}
       </DropdownMenu>
     </Dropdown>
   );
