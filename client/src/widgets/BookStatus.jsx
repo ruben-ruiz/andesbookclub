@@ -39,16 +39,17 @@ const BookStatus = ({ className, getBooks, book, status }) => {
         });
     }
   };
+  console.log('status: ', status);
 
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle} className={className}>
       <DropdownToggle caret>
-        {!status ? 'Add to Reading' : status}
+        {status === 'available' ? 'Add to Reading' : status}
       </DropdownToggle>
       <DropdownMenu>
         <DropdownItem onClick={() => handleChange('Reading')}>Reading</DropdownItem>
         <DropdownItem onClick={() => handleChange('Completed')}>Completed</DropdownItem>
-        {status ? <DropdownItem onClick={() => handleChange('Remove')}>Delete</DropdownItem> : null }
+        {status !== 'available' ? <DropdownItem onClick={() => handleChange('Remove')}>Delete</DropdownItem> : null }
       </DropdownMenu>
     </Dropdown>
   );

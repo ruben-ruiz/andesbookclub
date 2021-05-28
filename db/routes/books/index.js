@@ -3,7 +3,7 @@ const express = require('express');
 const booksRouter = express.Router();
 
 const bookTitleRouter = require('./booksTitle');
-const bookIsCompletedRouter = require('./bookCompleted');
+const bookIsCompletedRouter = require('./isCompleted');
 // root router for books
 
 booksRouter.get('/', (req, res) => {

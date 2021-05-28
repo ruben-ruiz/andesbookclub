@@ -15,7 +15,7 @@ bookIsCompletedRouter.get('/:bookId', (req, res) => {
     WHERE books.bookId = '${bookId}' AND userBooks.userId = ${req.session.userId}`)
       .then((dbRes) => {
         if (dbRes.rows.length === 0) {
-          res.status(200).send(false);
+          res.status(200).send('available');
         } else {
           const { iscompleted } = dbRes.rows[0];
           res.send(iscompleted);

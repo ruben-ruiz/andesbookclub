@@ -14,7 +14,12 @@ const bookInfo = (props) => {
   const [book, setBook] = useState({});
   const [showQuestions, setShowQuestions] = useState(false);
   const dataArr = [book.title, book.subtitle, book.author, book.thumbnail];
-
+  let status;
+  if (completedReading === 'available') {
+    status = 'available';
+  } else {
+    status = completedReading ? 'Completed' : 'Reading';
+  }
   useEffect(() => {
     console.log('this is the useEffect');
     axios({
@@ -49,10 +54,11 @@ const bookInfo = (props) => {
           });
       });
   }, [props.match.params.bookid]);
+
   return (
     <div>
       <Info data={dataArr} />
-      <BookStatus book={book} />
+      <BookStatus book={book} status={status} />
       <ListGroup>
         <ListGroupItem>
           Publish Date:
