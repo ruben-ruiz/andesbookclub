@@ -25,6 +25,9 @@ const App = () => {
         <Route path="/bookInfo">
           <BookInfo />
         </Route>
+        <Route path="/search">
+          <Search />
+        </Route>
         <Route path="/">
           <Landing />
         </Route>
