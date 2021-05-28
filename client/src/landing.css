@@ -115,15 +115,9 @@
   white-space: pre-wrap;
 }
 
-<<<<<<< HEAD
-/* .about-img {
-  width: 30%;
-} */
-=======
 .about-img {
   width: 30%;
 }
->>>>>>> main
 
 .mission {
   background-color: rgb(237, 239, 251);
@@ -135,11 +129,7 @@
   height: 80%;
 }
 
-<<<<<<< HEAD
-/* .footer {
-=======
 .footer {
->>>>>>> main
   height: 200px;
   display: flex;
   justify-content: flex-end;
@@ -159,8 +149,4 @@
 
 .footer-social>* {
   margin: 0 10px;
-<<<<<<< HEAD
-} */
-=======
 }
->>>>>>> main
