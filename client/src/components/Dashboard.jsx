@@ -3,9 +3,11 @@ import axios from 'axios';
 import QuizzesList from './QuizzesList';
 import ReadingList from './ReadingList';
 import CompletedList from './CompletedList';
+import QuizModal from './QuizModal';
 
 const Dashboard = () => {
   const [books, updateBooks] = useState([]);
+  const [modal, toggleModal] = useState(<></>);
 
   const getBooks = () => {
     axios.get('/users/books')
@@ -17,13 +19,24 @@ const Dashboard = () => {
       });
   };
 
+  function closeQuiz(jsx) {
+    toggleModal(jsx);
+  }
+
+  function toggleQuiz(book) {
+    console.log(book);
+    toggleModal(<QuizModal bookId={book.bookid} toggleQuiz={closeQuiz} />);
+  }
+
   useEffect(() => {
     getBooks();
   }, []);
 
   return (
     <div className="dashboard">
-      <QuizzesList />
+      {modal}
+      <QuizzesList toggleQuiz={toggleQuiz} />
+
       <ReadingList
         updateBooks={updateBooks}
         readingBooks={books.filter((book) => !book.iscompleted)}
