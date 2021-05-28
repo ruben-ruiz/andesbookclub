@@ -19,12 +19,26 @@ function Logout( { checkLogin } ) {
     // window.location.reload();
   };
 
+  const inStyle = {
+    width: '4rem',
+    outline: 'none',
+    color: 'white',
+    background: 'none',
+    fontSize: '1.5rem',
+    border: 'none',
+    cursor: 'pointer',
+  };
+
   return (
     <>
       <GoogleLogout
+        className="google-auth"
         clientId={clientId}
         buttonText="Logout"
         onLogoutSuccess={onSuccess}
+        render={renderProps => (
+          <button onClick={renderProps.onClick} style={inStyle}>Logout</button>
+        )}
       ></GoogleLogout>
     </>
   );
