@@ -13,10 +13,10 @@ class TopRatedQuestions extends React.Component {
         <div className='top-rated-questions'>
           {this.props.questions.map((question, index) =>
             <div className='cm-top-rated-question' key={index}>
-              <span className='cm-rankNum'>0{index+1}</span> &nbsp;&nbsp;&nbsp;
-              <span className='cm-top-username'>{question.profilename}</span>
-              <span className='cm-question-body'>Q: {question.questionbody}</span>
-              <span className='cm-question-upvotes'>Upvotes: {question.upvotes}</span>
+              <div className='cm-rankNum'>0{index+1}</div> &nbsp;&nbsp;&nbsp;
+              <div className='cm-top-username'>{question.profilename}</div>
+              <div className='cm-question-body'>Q: {question.questionbody}</div>
+              <div className='cm-question-upvotes'>Upvotes: {question.upvotes}</div>
             </div>
           )}
         </div>

@@ -4,7 +4,6 @@ import Dashboard from './components/Dashboard';
 // import Login from './Login';
 // import Logout from './Logout';
 import Search from './Search';
-import SearchResult from './SearchResult';
 import Landing from './components/Landing';
 import CommunityMetrics from './components/CommunityMetrics';
 import Navbar from './components/Navbar';
@@ -22,6 +21,9 @@ const App = () => (
         <CommunityMetrics />
       </Route>
       <Route path="/bookInfo/:bookid" component={BookInfo} />
+      <Route path="/search">
+        <Search />
+      </Route>
       <Route path="/">
         <Landing />
       </Route>

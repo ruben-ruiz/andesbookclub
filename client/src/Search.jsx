@@ -1,6 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import { Input } from 'reactstrap';
+import {
+  Input,
+  InputGroup,
+  InputGroupAddon,
+  Form,
+  FormGroup,
+  Button,
+} from 'reactstrap';
 import SearchResult from './SearchResult';
 // import css from './styles.css';
 
@@ -11,7 +18,6 @@ class Search extends React.Component {
       title: '',
       total: 0,
       items: [],
-      itemString: '',
     };
     this.handleSearchInput = this.handleSearchInput.bind(this);
     this.handleEnter = this.handleEnter.bind(this);
@@ -24,37 +30,45 @@ class Search extends React.Component {
   }
 
   handleEnter(e) {
+    e.preventDefault();
     const { title } = this.state;
-    if (e.key === 'Enter' && title.length > 0) {
-      axios.get(`/books/${title}`, { params: 1 })
-        .then((response) => {
-          this.setState({
-            total: response.data.totalItems,
-            items: response.data.items,
-            itemString: JSON.stringify(response.data.items),
-          });
-        })
-        .catch();
-    }
+
+    axios.get(`/books/${title}`, { params: 1 })
+      .then((response) => {
+        this.setState({
+          total: response.data.totalItems,
+          items: response.data.items,
+        });
+      })
+      .catch();
   }
 
   render() {
     const { total } = this.state;
     const { items } = this.state;
     const { title } = this.state;
-    const { itemString } = this.state;
     return (
       <div className="search-bar">
-        <Input
+        {/* <Input
           className="search-input"
           value={title}
           onChange={this.handleSearchInput}
           onKeyPress={this.handleEnter}
-          placeholder="Search"
-        />
+          placeholder="Search!"
+        /> */}
+        <Form onSubmit={(e) => this.handleEnter(e)}>
+          <FormGroup>
+            <InputGroup>
+              <Input href="/search" type="text" placeholder="Search books..." name="search" onChange={this.handleSearchInput} />
+              <InputGroupAddon addonType="append">
+                <Button type="submit">Search</Button>
+              </InputGroupAddon>
+            </InputGroup>
+          </FormGroup>
+        </Form>
         {
           total !== 0 && title
-            ? <SearchResult data={total} title={title} items={items} itemString={itemString} />
+            ? <SearchResult data={total} title={title} results={items} />
             : null
         }
       </div>
