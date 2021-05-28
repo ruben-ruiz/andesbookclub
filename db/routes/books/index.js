@@ -16,7 +16,7 @@ booksRouter.get('/', (req, res) => {
     .then((dbRes) => {
       res.send(dbRes.rows);
     })
-    .catch(err => res.sendStatus(404));
+    .catch(err => res.sendStatus(200));
 });
 
 // booksRouter.use('/:bookId', bookidsRouter);

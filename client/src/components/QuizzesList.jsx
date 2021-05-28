@@ -808,7 +808,6 @@ const QuizzesList = ({ toggleQuiz }) => {
             .then((data) => {
                 async function filterBooks() {
                     console.log(data);
-                    // await updateQuizzes(data.data);
                     let container = [];
                     await data.data.forEach((book, i) => {
                         axios.get(`books/isCompleted/${book.bookid}`)
@@ -829,7 +828,6 @@ const QuizzesList = ({ toggleQuiz }) => {
                     })
                 }
                 filterBooks();
-
             })
     }
 

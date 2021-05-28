@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QuizView from './QuizView';
 
+const defaultQuestions = [];
+
 function QuizModal({ bookId, toggleQuiz }) {
 
   const [start, changeStart] = useState(false);
