@@ -8,7 +8,8 @@ booksTitle.get('/', (req, res) => {
   axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.baseUrl.slice(7)}&startIndex=${index}`)
     .then((response) => {
       res.json(response.data);
-    });
+    })
+    .catch(err => res.sendStatus(404));
 });
 
 module.exports = booksTitle;
