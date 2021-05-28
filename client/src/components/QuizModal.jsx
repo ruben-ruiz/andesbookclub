@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QuizView from './QuizView';
 
-function QuizModal(props) {
-  const { bookId } = props;
+const defaultQuestions = [];
+
+function QuizModal({ bookId, toggleQuiz }) {
+
   const [start, changeStart] = useState(false);
   const [questionSets, updateSets] = useState([]);
   const [currentSet, changeSet] = useState({});
@@ -41,11 +43,22 @@ function QuizModal(props) {
       .catch((err) => console.log(err));
   }, []);
 
-  const view = !start ? <button type="button" className="start-quiz question-vote-choice" onClick={e => changeStart(!start)}>start quiz</button> : <QuizView set={currentSet} prev={handlePrev} next={handleNext} list={questionSets} answers={answers} />;
+  const view = !start ? <button type="button" className="start-quiz question-vote-choice" onClick={e => changeStart(!start)}>start quiz</button> : <QuizView set={currentSet} prev={handlePrev} next={handleNext} list={questionSets} answers={answers} toggleQuiz={toggleQuiz} />;
 
   return (
     <div className="popup">
-      <div className="quiz">
+      <div
+        className="quiz"
+      >
+        <button
+          type="button"
+          onClick={() => {
+            toggleQuiz(<></>);
+          }}
+          className="popup-close"
+        >
+          close
+        </button>
         {view}
       </div>
     </div>

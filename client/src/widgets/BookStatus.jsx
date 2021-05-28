@@ -2,29 +2,76 @@ import React, { useState } from 'react';
 import {
   Dropdown, DropdownToggle, DropdownMenu, DropdownItem,
 } from 'reactstrap';
+import axios from 'axios';
 
-const BookStatus = ({ className, deleteBook, index }) => {
+const BookStatus = ({ className, getBooks = () => { }, book, status, setCompletedReading = () => { } }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
-  const [status, setStatus] = useState('Available');
+
+  const deleteBook = (book) => {
+    axios.delete(`/users/books/remove/${book.bookid}`)
+      .then((res) => {
+        console.log('book deleted', res);
+        getBooks();
+      }).catch((err) => {
+        console.log('error deleting book from userbooks', err);
+      });
+  };
 
   const handleChange = (val) => {
-    if (val === 'Remove') {
-      deleteBook(index);
+    if (status === 'available') {
+      if (val === 'Reading') {
+        axios.post(`/users/books/addReadingBook/${book.bookId}`)
+          .then(() => {
+            setCompletedReading(false);
+          }).catch((err) => {
+            console.log(err);
+          });
+      } else {
+        axios.post(`/users/books/addCompletedBook/${book.bookId}`)
+          .then(() => {
+            setCompletedReading(true);
+          }).catch((err) => {
+            console.log(err);
+          });
+      }
     } else {
-      setStatus(val);
+      let z = 0;
+      if (val === 'Remove') {
+        deleteBook(book);
+        setCompletedReading('available');
+      } else if (val === 'Reading') {
+        axios.put(`/users/books/setReading/${book.bookId}`)
+          .then((res) => {
+            console.log('book added to reading list', res.data);
+            setCompletedReading('Reading');
+          })
+          .catch((error) => {
+            console.log('there was an error in Reading put: ', error);
+          });
+        } else if (val === 'Completed') {
+          axios.put(`/users/books/setCompleted/${book.bookId}`)
+          .then((res) => {
+            console.log('book added to completed list', res.data);
+            setCompletedReading('Completed');
+          })
+          .catch((error) => {
+            console.log('there was an error in Completed put: ', error);
+          });
+      }
     }
   };
+  console.log('status: ', status);
 
   return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle} className={className}>
       <DropdownToggle caret>
-        {status === 'Available' ? 'Add to Reading' : status}
+        {status === 'available' ? 'Add to Reading' : status}
       </DropdownToggle>
       <DropdownMenu>
         <DropdownItem onClick={() => handleChange('Reading')}>Reading</DropdownItem>
         <DropdownItem onClick={() => handleChange('Completed')}>Completed</DropdownItem>
-        <DropdownItem onClick={() => handleChange('Remove')}>Delete</DropdownItem>
+        {status !== 'available' ? <DropdownItem onClick={() => handleChange('Remove')}>Delete</DropdownItem> : null}
       </DropdownMenu>
     </Dropdown>
   );

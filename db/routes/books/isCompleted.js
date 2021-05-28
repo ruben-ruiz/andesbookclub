@@ -6,7 +6,7 @@ const bookIsCompletedRouter = express.Router();
 bookIsCompletedRouter.get('/:bookId', (req, res) => {
   const { bookId } = req.params;
   if (!req.session.userId) {
-    res.send(false);
+    res.send('available');
   } else {
     db.query(`
     SELECT isCompleted
@@ -14,9 +14,12 @@ bookIsCompletedRouter.get('/:bookId', (req, res) => {
     JOIN userBooks ON userBooks.bookId = books.bookId
     WHERE books.bookId = '${bookId}' AND userBooks.userId = ${req.session.userId}`)
       .then((dbRes) => {
-        const { iscompleted } = dbRes.rows[0];
-        console.log(iscompleted);
-        res.send(iscompleted);
+        if (dbRes.rows.length === 0) {
+          res.status(200).send('available');
+        } else {
+          const { iscompleted } = dbRes.rows[0];
+          res.send(iscompleted);
+        }
       });
   }
 });

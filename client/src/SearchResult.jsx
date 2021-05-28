@@ -8,10 +8,14 @@ class SearchResult extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: [],
+      items: null,
     };
     this.setInitialPage = this.setInitialPage.bind(this);
     this.setCurrentPage = this.setCurrentPage.bind(this);
+  }
+
+  componentDidMount() {
+    this.setCurrentPage({ selected: 0 });
   }
 
   setInitialPage() {
@@ -24,6 +28,12 @@ class SearchResult extends React.Component {
       })
       .catch();
   }
+
+  // componenetDidUpdate(prevProp, prevState) {
+  //   if(prevState !== this.state.items) {
+  //     this.setInitialPage();
+  //   }
+  // }
 
   setCurrentPage(page) {
     const { title } = this.props;
@@ -40,18 +50,33 @@ class SearchResult extends React.Component {
     const { data } = this.props;
     const pageNum = Math.ceil(data / 10);
     const { items } = this.state;
-    if (items.length === 0) {
-      this.setInitialPage();
-    }
+
+    // if (items) {
+    //   this.setInitialPage();
+    // }
     return (
       <div className="result-page">
         <div className="search-total">
-          Total results:
+          Displaying
+          {' '}
+          {
+            items
+              ? items.length
+              : 0
+          }
+          {' '}
+          of
           {' '}
           {data}
+          {' '}
+          results
         </div>
         <div className="search-list">
-          <SearchList items={items} />
+          {
+            items
+              ? <SearchList items={items} />
+              : null
+          }
           <ReactPaginate
             previousLabel="Previous"
             nextLabel="Next"
