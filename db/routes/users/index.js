@@ -9,6 +9,7 @@ const db = require('../../index');
 const usersRouter = express.Router();
 const userLoginRouter = require('./login');
 const userLogoutRouter = require('./logout');
+const userStatsRouter = require('./userStats')
 const userBooksRouter = require('./books');
 const userQuizzesRouter = require('./quizzes');
 
@@ -18,6 +19,7 @@ usersRouter.get('/', async (req, res) => {
 });
 usersRouter.use('/login', userLoginRouter);
 usersRouter.use('/logout', userLogoutRouter);
+usersRouter.use('/userStats', userStatsRouter);
 usersRouter.use('/books', userBooksRouter);
 usersRouter.use('/quizzes', userQuizzesRouter);
 

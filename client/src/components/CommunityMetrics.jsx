@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import TopRatedQuestions from './TopRatedQuestions';
 import TopRatedUsers from './TopRatedUsers';
+import UserStats from './UserStats';
 // import fakeUsers from '../../fakeUsers.json'
 // import fakeQuestions from '../../fakeQuestions.json'
 
@@ -11,17 +12,20 @@ class CommunityMetrics extends React.Component {
     this.state = {
       users: [],
       questions: [],
+      userStats: [0, 0, 0, 'N/A', 0, 'N/A']
     };
 
     this.getUsers = this.getUsers.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
     this.getData = this.getData.bind(this);
+    this.getUserStats = this.getUserStats.bind(this);
   }
 
   componentDidMount() {
     this.getData();
     console.log('users', this.state.users);
     console.log('questions', this.state.questions);
+
   }
 
   getUsers() {
@@ -40,15 +44,25 @@ class CommunityMetrics extends React.Component {
     })
   }
 
+  getUserStats() {
+    return new Promise((resolve, reject) => {
+      axios.get('users/userstats')
+      .then((res) => resolve(res))
+      .catch((err) => reject(err))
+    })
+  }
+
   getData() {
     Promise.all([
       this.getUsers(),
       this.getQuestions(),
+      this.getUserStats()
     ]).then((responses) => {
       console.log('responses', responses);
       this.setState({
         users: responses[0].data,
         questions: responses[1].data,
+        userStats: [Number(responses[2].data[0].count), 0, 0, 'N/A', 0, 'N/A']
       });
     }).catch((err) => {
       console.log(err);
@@ -58,6 +72,8 @@ class CommunityMetrics extends React.Component {
   render() {
     return (
       <div>
+        <UserStats userStats={this.state.userStats}/>
+
         <TopRatedQuestions questions={this.state.questions} />
 
         <TopRatedUsers users={this.state.users} />
