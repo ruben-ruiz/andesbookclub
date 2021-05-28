@@ -12,6 +12,7 @@ class CommunityMetrics extends React.Component {
     this.state = {
       users: [],
       questions: [],
+      userStats: [0, 0, 0, 'N/A', 0, 'N/A']
     };
 
     this.getUsers = this.getUsers.bind(this);
@@ -24,11 +25,7 @@ class CommunityMetrics extends React.Component {
     this.getData();
     console.log('users', this.state.users);
     console.log('questions', this.state.questions);
-<<<<<<< HEAD
-    this.getUserStats();
 
-=======
->>>>>>> main
   }
 
   getUsers() {
@@ -48,19 +45,18 @@ class CommunityMetrics extends React.Component {
   }
 
   getUserStats() {
-    // return new Promise((resolve, reject) => {
-    //   axios.get('users/userstats')
-    //   .then((res) => resolve(res))
-    //   .catch((err) => reject(err))
-    // })
-
-    axios.get('users/userstats').then((res) => console.log('userId', res))
+    return new Promise((resolve, reject) => {
+      axios.get('users/userstats')
+      .then((res) => resolve(res))
+      .catch((err) => reject(err))
+    })
   }
 
   getData() {
     Promise.all([
       this.getUsers(),
       this.getQuestions(),
+      this.getUserStats()
     ]).then((responses) => {
       console.log('responses', responses);
       this.setState({
@@ -75,7 +71,8 @@ class CommunityMetrics extends React.Component {
   render() {
     return (
       <div>
-        <UserStats/>
+        <UserStats userStats={this.state.userStats}/>
+
         <TopRatedQuestions questions={this.state.questions} />
 
         <TopRatedUsers users={this.state.users} />
