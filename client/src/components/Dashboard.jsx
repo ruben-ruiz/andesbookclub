@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import QuizzesList from './QuizzesList';
 import ReadingList from './ReadingList';
+import LineGraph from '../LineGraph';
 import CompletedList from './CompletedList';
 import QuizModal from './QuizModal';
 
@@ -47,6 +48,7 @@ const Dashboard = () => {
     <div className="dashboard">
       <QuizzesList quizzes={quizzes} updateQuizzes={updateQuizzes} toggleQuiz={toggleQuiz} />
       {modal}
+      <LineGraph />
       <ReadingList
         getBooks={getBooks}
         readingBooks={books.filter((book) => !book.iscompleted)}

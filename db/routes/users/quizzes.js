@@ -5,14 +5,25 @@ const userQuizzesRouter = express.Router();
 
 function getUserQuizzes(req) {
   return db.query(`
-    SELECT title, thumbnail
+
+    SELECT books.title, books.bookId, books.thumbnail, MAX(bookQuestions.answeredAt)
     FROM books
-    JOIN userBooks ON userBooks.bookId = questions.bookId
-    WHERE userBooks.userId = ${1} AND books.id = userBooks.bookId
+    INNER JOIN(
+    SELECT answersPerBook.*
+    FROM userBooks
+    LEFT JOIN LATERAL (
+      SELECT questions.bookId, questions.questionId, MAX(userAnswers.answeredAt) as answeredAt
+      FROM userAnswers
+      JOIN questions ON questions.questionId = userAnswers.questionId
+    GROUP BY questions.questionId
+    ) as answersPerBook ON answersPerBook.bookId = userBooks.bookId
+      WHERE userBooks.isCompleted = true AND userBooks.userId = ${1}
+    ) as bookQuestions ON bookQuestions.bookId = books.bookId
+      WHERE DATE_PART('day', NOW() - bookQuestions.answeredAt) > 0
+    GROUP BY books.bookId
   `);
 }
 userQuizzesRouter.get('/', (req, res) => {
-  console.log('in the userQuizzesRouter');
   getUserQuizzes(req)
     .then((dbRes) => {
       console.log(dbRes);

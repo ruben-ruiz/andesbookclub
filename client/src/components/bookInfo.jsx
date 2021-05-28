@@ -20,6 +20,8 @@ const bookInfo = (props) => {
   } else {
     status = completedReading ? 'Completed' : 'Reading';
   }
+  console.log('props bookid: ', props.match.params.bookid);
+
   useEffect(() => {
     console.log('this is the useEffect');
     axios({

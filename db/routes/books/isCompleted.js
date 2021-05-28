@@ -6,7 +6,7 @@ const bookIsCompletedRouter = express.Router();
 bookIsCompletedRouter.get('/:bookId', (req, res) => {
   const { bookId } = req.params;
   if (!req.session.userId) {
-    res.send(false);
+    res.send('available');
   } else {
     db.query(`
     SELECT isCompleted
