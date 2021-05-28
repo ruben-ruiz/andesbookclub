@@ -4,7 +4,7 @@ import {
 } from 'reactstrap';
 import axios from 'axios';
 
-const BookStatus = ({ className, getBooks, book, status }) => {
+const BookStatus = ({ className, getBooks = () => {}, book, status, setCompletedReading = () => {}}) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const toggle = () => setDropdownOpen((prevState) => !prevState);
 
@@ -19,29 +19,47 @@ const BookStatus = ({ className, getBooks, book, status }) => {
   };
 
   const handleChange = (val) => {
-    if (val === 'Remove') {
-      deleteBook(book);
-    } else if (val === 'Reading' && status !== 'Reading') {
-      axios.put(`/users/books/reading/${book.bookid}`)
+    if (status === 'available') {
+      if (val === 'Reading') {
+        axios.post(`/users/books/addReadingBook/${bookId}`)
+          .then(() => {
+            setCompletedReading(false);
+          }).catch((err) => {
+            console.log(err);
+          });
+      } else {
+        axios.post(`/users/books/addCompletedBook/${bookId}`)
+          .then(() => {
+            setCompletedReading(true);
+          }).catch((err) => {
+            console.log(err);
+          });
+      }
+    } else { //this means that status is either 'Completed' or 'Reading'
+      if (val === 'Remove') {
+        deleteBook(book);
+        setCompletedReading('available');
+      } else if (val === 'Reading' && status !== 'Reading') {
+        axios.put(`/users/books/setReading/${book.bookid}`)
         .then((res) => {
           console.log('book added to reading list', res.data);
         })
         .catch((error) => {
           console.log('there was an error in Reading put: ', error);
         });
-    } else if (val === 'Completed' && status !== 'Completed') {
-      axios.put(`/users/books/completed/${book.bookid}`)
+      } else if (val === 'Completed' && status !== 'Completed') {
+        axios.put(`/users/books/setCompleted/${book.bookid}`)
         .then((res) => {
           console.log('book added to completed list', res.data);
         })
         .catch((error) => {
           console.log('there was an error in Completed put: ', error);
         });
-    }
-  };
-  console.log('status: ', status);
+      }
+    };
+    console.log('status: ', status);
 
-  return (
+    return (
     <Dropdown isOpen={dropdownOpen} toggle={toggle} className={className}>
       <DropdownToggle caret>
         {status === 'available' ? 'Add to Reading' : status}
