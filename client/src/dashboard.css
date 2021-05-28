@@ -67,7 +67,8 @@
 /*///////////// COMPONENTS ////////////////*/
 
 .reading-section,
-.completed-section {
+.completed-section,
+.quizzes-section {
   height: 20rem;
 }
 

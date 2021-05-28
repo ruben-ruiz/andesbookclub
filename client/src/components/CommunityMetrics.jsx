@@ -18,7 +18,9 @@ class CommunityMetrics extends React.Component {
     this.getUsers = this.getUsers.bind(this);
     this.getQuestions = this.getQuestions.bind(this);
     this.getData = this.getData.bind(this);
-    this.getUserStats = this.getUserStats.bind(this);
+    this.getUserBooks = this.getUserBooks.bind(this);
+    this.getUserQuestions = this.getUserQuestions.bind(this);
+    this.getTopQuestion = this.getTopQuestion.bind(this);
   }
 
   componentDidMount() {
@@ -44,9 +46,25 @@ class CommunityMetrics extends React.Component {
     })
   }
 
-  getUserStats() {
+  getUserBooks() {
     return new Promise((resolve, reject) => {
       axios.get('users/userstats')
+      .then((res) => resolve(res))
+      .catch((err) => reject(err))
+    })
+  }
+
+  getUserQuestions() {
+    return new Promise((resolve, reject) => {
+      axios.get('users/userstats/questions')
+      .then((res) => resolve(res))
+      .catch((err) => reject(err))
+    })
+  }
+
+  getTopQuestion() {
+    return new Promise((resolve, reject) => {
+      axios.get('users/userstats/topquestion')
       .then((res) => resolve(res))
       .catch((err) => reject(err))
     })
@@ -56,13 +74,15 @@ class CommunityMetrics extends React.Component {
     Promise.all([
       this.getUsers(),
       this.getQuestions(),
-      this.getUserStats()
+      this.getUserBooks(),
+      this.getUserQuestions(),
+      this.getTopQuestion(),
     ]).then((responses) => {
       console.log('responses', responses);
       this.setState({
         users: responses[0].data,
         questions: responses[1].data,
-        userStats: [Number(responses[2].data[0].count), 0, 0, 'N/A', 0, 'N/A']
+        userStats: [Number(responses[2].data[0].count), 0, 0, 'N/A', Number(responses[3].data[0].count), responses[4].data[0].questionbody]
       });
     }).catch((err) => {
       console.log(err);

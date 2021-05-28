@@ -11,19 +11,21 @@ const Dashboard = () => {
   const [quizzes, updateQuizzes] = useState([]);
   const [modal, toggleModal] = useState(<></>);
 
+
+  const getQuizzes = () => {
+    axios.get('/users/quizzes')
+    .then((res) => {
+      updateQuizzes(res.data);
+    }).catch((err) => {
+      console.log('error: ', err);
+    });
+  };
+
   const getBooks = () => {
     axios.get('/users/books')
       .then((res) => {
         updateBooks(res.data);
-      }).catch((err) => {
-        console.log('error: ', err);
-      });
-  };
-
-  const getQuizzes = () => {
-    axios.get('/users/quizzes')
-      .then((res) => {
-        updateQuizzes(res.data);
+        getQuizes();
       }).catch((err) => {
         console.log('error: ', err);
       });

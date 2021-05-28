@@ -24,8 +24,16 @@ userStatsRouter.get('/', (req, res) => {
     // `SELECT count(questions.questionId), count(CASE WHEN userBooks.isCompleted THEN 1 END) FROM questions JOIN users on users.userId = questions.createdBy JOIN userBooks on users.userId = userBooks.userId WHERE users.userId = ${req.session.userId}`
 
     .then(data => {res.send(data.rows)})
+})
 
+userStatsRouter.get('/questions', (req, res) => {
+  db.query(`SELECT count(questions.questionId) FROM questions JOIN users on users.userId = questions.createdBy WHERE users.userId = ${req.session.userId}`)
+  .then(data => {res.send(data.rows)})
+})
 
+userStatsRouter.get('/topquestion', (req, res) => {
+  db.query(`SELECT questions.questionBody FROM questions JOIN users on questions.createdBy = users.userId WHERE users.userId = ${req.session.userId} ORDER by upvotes DESC LIMIT 1`)
+  .then(data => {res.send(data.rows)})
 })
 
 module.exports = userStatsRouter;
