@@ -54,8 +54,8 @@ function bookData(bookObj, userId) {
     thumbnail: bookInfo.imageLinks.thumbnail || '',
     buyLink: bookInfo.buyLink || 'N/A',
   };
-  const authorData = bookInfo.authors ? bookInfo.authors.map((author) => "('" + author + "','" + bookData.bookId + "')").join(', ') : "('','"+bookData.bookId + "')";
-  const categData = bookInfo.categories ? bookInfo.categories.map((category) => "('" + category + "','" + bookData.bookId + "')").join(', ') : "('','"+bookData.bookId + "')";
+  const authorData = bookInfo.authors ? bookInfo.authors.map((author) => "($$" + author + "$$,'" + bookData.bookId + "')").join(', ') : "('','"+bookData.bookId + "')";
+  const categData = bookInfo.categories ? bookInfo.categories.map((category) => "($$" + category + "$$,'" + bookData.bookId + "')").join(', ') : "('','"+bookData.bookId + "')";
   const userData = "(" + userId + ", '" + bookData.bookId + "')";
   const bookCols = Object.keys(bookData).join(', ');
   const bookVals = Object.values(bookData).map((val) => typeof val === 'string' ? "$$" + val + "$$" : val).join(', ');

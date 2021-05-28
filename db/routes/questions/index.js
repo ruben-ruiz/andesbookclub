@@ -18,18 +18,19 @@ questionsRouter.get('/', (req, res) => {
 // post request to questions
 questionsRouter.post('/', (req, res) => {
   // const { body } = req.body;
-  console.log('in the post, server side ', req.session.userId);
+  // console.log('in the post, server side ', req.session.userId);
   const correct = Number(req.body[4]);
-  console.log(typeof correct);
+  console.log('correct: ', correct);
   db.query(
     `INSERT INTO questions (createdBy, upvotes, downvotes, questionBody, answer1, answer2, answer3, answer4, correctAnswer, bookId)
-    VALUES (${req.session.userId}, 0, 0, ${req.body[5]}, ${req.body[0]}, ${req.body[1]}, ${req.body[2]}, ${req.body[3]}, ${correct}, ${req.body[6]})`,
+    VALUES (${req.session.userId}, 0, 0, $$${req.body[5]}$$, $$${req.body[0]}$$, $$${req.body[1]}$$, $$${req.body[2]}$$, $$${req.body[3]}$$, ${correct}, $$${req.body[6]}$$)`,
   )
     .then(() => {
       res.status(200).send('success');
     })
-    .catch((error) => {
-      res.status(500).send('oopers');
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send(err);
     });
 });
 
