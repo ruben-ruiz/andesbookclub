@@ -5,14 +5,13 @@ const userQuizzesRouter = express.Router();
 
 function getUserQuizzes(req) {
   return db.query(`
-    SELECT title, thumbnail
-    FROM books AS b
-    INNER JOIN LATERAL
-    (SELECT * AS q
-      FROM questions
-      WHERE b.id = q.bookid)
-    AND userBooks ON userBooks.bookId = questions.bookId
-    WHERE userBooks.userId = ${1}
+    SELECT books.title, books.thumbnail FROM books
+    INNER JOIN (
+      SELECT * FROM questions
+      JOIN userBooks ON userBooks.bookId = questions.bookId
+      WHERE userBooks.userId = ${1}
+    )
+    ON books.id = userBooks.bookId
   `);
 }
 userQuizzesRouter.get('/', (req, res) => {

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Carousel from '../widgets/Carousel';
 import Quiz from './Quiz';
 
-const QuizzesList = ({ quizzes, updateQuizzes }) => (
+const QuizzesList = ({ quizzes, updateQuizzes, toggleQuiz}) => (
   <div className="quizzes-list">
     <h2>Pending Quizzes</h2>
     {quizzes
@@ -14,6 +14,7 @@ const QuizzesList = ({ quizzes, updateQuizzes }) => (
               quiz={quiz}
               index={index}
               updateQuizzes={updateQuizzes}
+              toggleQuiz={toggleQuiz}
             />
           ))}
         </Carousel>
