@@ -40,7 +40,6 @@ function Landing() {
           Optimize your retention and make the books you read count!
         </p>
       </div>
-      <Footer />
     </div>
   );
 }

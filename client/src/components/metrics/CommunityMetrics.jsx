@@ -101,7 +101,7 @@ class CommunityMetrics extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="metrics">
         { this.state.isLoggedIn ? <UserStats userStats={this.state.userStats}/> : null }
 
         <TopRatedQuestions questions={this.state.questions} />

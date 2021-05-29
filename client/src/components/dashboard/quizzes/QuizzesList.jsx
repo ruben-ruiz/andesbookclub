@@ -4,7 +4,7 @@ import Quiz from './Quiz';
 
 const QuizzesList = ({ quizzes, toggleQuiz}) => (
   <div className="quizzes-list">
-    <h2>Pending Quizzes</h2>
+    <div id="dashboard-head">Pending Quizzes</div>
     {quizzes
       ? (
         <Carousel className="quizzes-section">

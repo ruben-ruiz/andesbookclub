@@ -4,7 +4,7 @@ import Carousel from '../../../widgets/Carousel';
 
 const CompletedList = ({ completedBooks, getBooks }) => (
   <div className="completed-list">
-    <h2>Completed Reading</h2>
+    <div id="dashboard-head">Completed Reading</div>
     {completedBooks.length > 0
       ? (
         <Carousel className="completed-section">
