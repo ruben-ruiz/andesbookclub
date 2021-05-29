@@ -1,10 +1,8 @@
 import React from 'react';
-import Footer from './Footer';
-
-// images
-import hookImg from '../assets/img/reading.png';
-import aboutImg from '../assets/img/studying.png';
-import graph from '../assets/img/graph.png';
+import Footer from '../../widgets/Footer';
+import hookImg from '../../assets/img/reading.png';
+import aboutImg from '../../assets/img/studying.png';
+import graph from '../../assets/img/graph.png';
 
 function Landing() {
   return (
@@ -42,7 +40,6 @@ function Landing() {
           Optimize your retention and make the books you read count!
         </p>
       </div>
-      <Footer />
     </div>
   );
 }

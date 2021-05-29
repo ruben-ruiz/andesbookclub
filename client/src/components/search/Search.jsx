@@ -9,7 +9,6 @@ import {
   Button,
 } from 'reactstrap';
 import SearchResult from './SearchResult';
-// import css from './styles.css';
 
 class Search extends React.Component {
   constructor() {

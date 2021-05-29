@@ -1,5 +1,5 @@
 import React from 'react';
-import Carousel from '../widgets/Carousel';
+import Carousel from '../../../widgets/Carousel';
 import Quiz from './Quiz';
 
 const QuizzesList = ({ quizzes, toggleQuiz}) => (
