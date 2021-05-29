@@ -13,14 +13,29 @@ import logo from '../assets/img/logo.png';
 
 function Navigation() {
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const [userImage, setUserImage] = useState('');
 
-  const checkLogin = () => {
+  const checkLogin = () => (
     axios.get('/isLoggedIn')
-      .then((res) => {
-        setLoggedIn(res.data);
+      .then((res) => (
+        res.data
+      ))
+      .then((loggedIn) => {
+        if (loggedIn) {
+          axios.get('/users/image')
+            .then((res) => {
+              const userImg = res.data[0] ? res.data[0].profilephoto : '';
+              console.log('image is:', userImg);
+              setLoggedIn(loggedIn);
+              setUserImage(userImg);
+            });
+        } else {
+          setLoggedIn(loggedIn);
+          setUserImage('');
+        }
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  );
 
   useEffect(() => {
     checkLogin();
@@ -37,12 +52,21 @@ function Navigation() {
           <NavLink href="/search">Search Books</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="/dashboard">Dashboard</NavLink>
+          <NavLink
+            onClick={() => (
+              !isLoggedIn ? alert('Please login first to see your dashboard 😊') : null
+            )}
+            href={isLoggedIn ? "/dashboard" : null}
+          >
+            Dashboard
+          </NavLink>
         </NavItem>
         <NavItem>
           <NavLink href="/metrics">Metrics</NavLink>
         </NavItem>
-        { isLoggedIn ? <Logout checkLogin={checkLogin} /> : <Login checkLogin={checkLogin} /> }
+        { isLoggedIn
+          ? <Logout userImage={userImage} checkLogin={checkLogin} />
+          : <Login checkLogin={checkLogin} />}
       </Nav>
     </Navbar>
   );

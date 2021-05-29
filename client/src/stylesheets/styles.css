@@ -158,8 +158,24 @@ a {
   ;
 }
 
-.google-auth {
-  background: yellow;
+.profileImage {
+  border-radius: 100%;
+  height: 70%;
+  width:70%;
+}
+.nav
+.dropdown-toggle {
+  width: 4rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+.nav
+.dropdown-toggle:hover {
+  color:rgb(255, 217, 0);
 }
 
 /* [ Community Metrics ] */
