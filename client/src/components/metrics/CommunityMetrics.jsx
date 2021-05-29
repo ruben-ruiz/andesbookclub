@@ -11,6 +11,7 @@ class CommunityMetrics extends React.Component {
       users: [],
       questions: [],
       userStats: [0, 0, 0, 'N/A', 0, 'N/A'],
+      isLoggedIn: false,
     };
 
     this.getUsers = this.getUsers.bind(this);
@@ -19,6 +20,7 @@ class CommunityMetrics extends React.Component {
     this.getUserBooks = this.getUserBooks.bind(this);
     this.getUserQuestions = this.getUserQuestions.bind(this);
     this.getTopQuestion = this.getTopQuestion.bind(this);
+    this.getUserInfo = this.getUserInfo.bind(this);
   }
 
   componentDidMount() {
@@ -39,6 +41,20 @@ class CommunityMetrics extends React.Component {
       .then((res) => resolve(res))
       .catch((err) => reject(err))
     })
+  }
+
+  getUserInfo() {
+    return axios.get('/isLoggedIn')
+      .then((res) => {
+        const loggedIn = res.data;
+        if (loggedIn) {
+          return Promise.all([
+            this.getUserBooks(),
+            this.getUserQuestions(),
+            this.getTopQuestion()]);
+        }
+        return [false, false, false];
+      });
   }
 
   getUserBooks() {
@@ -69,15 +85,14 @@ class CommunityMetrics extends React.Component {
     Promise.all([
       this.getUsers(),
       this.getQuestions(),
-      this.getUserBooks(),
-      this.getUserQuestions(),
-      this.getTopQuestion(),
+      this.getUserInfo(),
     ]).then((responses) => {
       console.log('responses', responses);
       this.setState({
         users: responses[0].data,
         questions: responses[1].data,
-        userStats: [Number(responses[2].data[0].count), 0, 0, 'N/A', Number(responses[3].data[0].count), responses[4].data[0] ? responses[4].data[0].questionbody : 'No questions contributed'],
+        userStats: responses[2][1] === false ? [0, 0, 0, 'N/A', 0, 'N/A'] : [Number(responses[2][0].data[0].count), 0, 0, 'N/A', Number(responses[2][1].data[0].count), responses[2][2].data[0] ? responses[2][2].data[0].questionbody : 'No questions contributed'],
+        isLoggedIn: !!responses[2][1],
       });
     }).catch((err) => {
       console.log(err);
@@ -87,7 +102,7 @@ class CommunityMetrics extends React.Component {
   render() {
     return (
       <div>
-        <UserStats userStats={this.state.userStats}/>
+        { this.state.isLoggedIn ? <UserStats userStats={this.state.userStats}/> : null }
 
         <TopRatedQuestions questions={this.state.questions} />
 

@@ -9,9 +9,10 @@ const db = require('../../index');
 const usersRouter = express.Router();
 const userLoginRouter = require('./login');
 const userLogoutRouter = require('./logout');
-const userStatsRouter = require('./userStats')
+const userStatsRouter = require('./userStats');
 const userBooksRouter = require('./books');
 const userQuizzesRouter = require('./quizzes');
+const usersImageRouter = require('./image');
 
 // root router for users
 usersRouter.get('/', async (req, res) => {
@@ -22,5 +23,6 @@ usersRouter.use('/logout', userLogoutRouter);
 usersRouter.use('/userStats', userStatsRouter);
 usersRouter.use('/books', userBooksRouter);
 usersRouter.use('/quizzes', userQuizzesRouter);
+usersRouter.use('/image', usersImageRouter);
 
 module.exports = usersRouter;
