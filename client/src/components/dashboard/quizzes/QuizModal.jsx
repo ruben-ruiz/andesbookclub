@@ -3,7 +3,8 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
 import QuizView from './QuizView';
 
-function QuizModal({ bookId, toggleQuiz }) {
+function QuizModal({ bookid }) {
+
   const [start, changeStart] = useState(false);
   const [questionSets, updateSets] = useState([]);
   const [currentSet, changeSet] = useState({});
@@ -33,45 +34,19 @@ function QuizModal({ bookId, toggleQuiz }) {
   };
 
   useEffect(() => {
-    axios.get(`/questions/book/${bookId}`)
+    axios.get(`/questions/book/${bookid}`)
       .then((data) => {
         updateSets(data.data);
       })
       .catch((err) => console.log(err));
   }, []);
 
-  const view = !start
-    ? <button type="button" className="start-quiz question-vote-choice" onClick={e => changeStart(!start)}>start quiz</button>
-    : (
-      <QuizView
-        set={currentSet}
-        prev={handlePrev}
-        next={handleNext}
-        list={questionSets}
-        answers={answers}
-        toggleQuiz={toggleQuiz}
-      />
-    );
+  const view = !start ? <button type="button" className="start-quiz question-vote-choice" onClick={e => changeStart(!start)}>start quiz</button> : <QuizView set={currentSet} prev={handlePrev} next={handleNext} list={questionSets} answers={answers} />;
 
   return (
-    <div>
-      <div isOpen={start} className="popup">
-        <ModalBody
-          className="quiz"
-        >
-          <Button
-            type="button"
-            onClick={() => {
-              toggleQuiz(<></>);
-            }}
-            className="popup-close"
-          >
-            close
-          </Button>
-          {view}
-        </ModalBody>
-      </div>
-    </div>
+    <>
+      {view}
+    </>
   );
 }
 export default QuizModal;
