@@ -1,46 +1,41 @@
-import React from 'react';
-import { GoogleLogout } from 'react-google-login';
+import React, { useState } from 'react';
+import { useGoogleLogout } from 'react-google-login';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 const clientId = '679046458711-521g8lfg0gq7gqrlubug21l6ekdbiank.apps.googleusercontent.com';
 
-function Logout( { checkLogin } ) {
+function Logout({ checkLogin, userImage }) {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen(prevState => !prevState);
   let history = useHistory();
 
   const onSuccess = () => {
     axios.delete('/users/logout')
       .then((res) => {
         console.log(res.data);
-        checkLogin();
-        // alert(`${res.data} ✌`);
+        return checkLogin();
+      }).then(() => {
+        history.push('/');
       });
-    history.push('/');
-    // window.location.reload();
   };
-
-  const inStyle = {
-    width: '4rem',
-    outline: 'none',
-    color: 'white',
-    background: 'none',
-    fontSize: '1.5rem',
-    border: 'none',
-    cursor: 'pointer',
-  };
+  const { signOut } = useGoogleLogout({
+    clientId,
+    onLogoutSuccess: onSuccess,
+  });
 
   return (
-    <>
-      <GoogleLogout
-        className="google-auth"
-        clientId={clientId}
-        buttonText="Logout"
-        onLogoutSuccess={onSuccess}
-        render={renderProps => (
-          <button onClick={renderProps.onClick} style={inStyle}>Logout</button>
-        )}
-      ></GoogleLogout>
-    </>
+    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+      <DropdownToggle caret>
+        <img className='profileImage' src={userImage} alt="Profile Image" />
+      </DropdownToggle>
+      <DropdownMenu>
+        <DropdownItem onClick={signOut}>
+          Logout
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
   );
 }
 

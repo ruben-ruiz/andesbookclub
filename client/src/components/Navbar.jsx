@@ -6,12 +6,7 @@ import {
   Nav,
   NavItem,
   NavLink,
-  InputGroup,
-  InputGroupAddon,
-  Input,
-  Form,
-  FormGroup,
-  Button,
+  Dropdown,
 } from 'reactstrap';
 import Search from '../Search';
 import Logout from '../Logout.jsx';
@@ -20,15 +15,29 @@ import logo from '../assets/img/logo.png';
 
 function Navigation() {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [search, setSearch] = useState('');
+  const [userImage, setUserImage] = useState('');
 
-  const checkLogin = () => {
+  const checkLogin = () => (
     axios.get('/isLoggedIn')
-      .then((res) => {
-        setLoggedIn(res.data);
+      .then((res) => (
+        res.data
+      ))
+      .then((loggedIn) => {
+        if (loggedIn) {
+          axios.get('/users/image')
+            .then((res) => {
+              const userImg = res.data[0] ? res.data[0].profilephoto : '';
+              console.log('image is:', userImg);
+              setLoggedIn(loggedIn);
+              setUserImage(userImg);
+            });
+        } else {
+          setLoggedIn(loggedIn);
+          setUserImage('');
+        }
       })
-      .catch((err) => console.log(err));
-  };
+      .catch((err) => console.log(err))
+  );
 
   useEffect(() => {
     checkLogin();
@@ -45,16 +54,6 @@ function Navigation() {
         <img className="logo" src={logo} alt="mountain-logo" />
         <NavbarBrand href="/" className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
       </div>
-      {/* <Form onSubmit={(e) => handleSubmit(e)}>
-        <FormGroup>
-          <InputGroup>
-            <Input href="/search" type="text" placeholder="Search books..." name="search" onChange={(e) => setSearch(e.target.value)} />
-            <InputGroupAddon addonType="append">
-              <Button href="/search" type="submit">Search</Button>
-            </InputGroupAddon>
-          </InputGroup>
-        </FormGroup>
-      </Form> */}
       <Nav>
         <NavItem>
           <NavLink href="/search">Search Books</NavLink>
@@ -65,7 +64,9 @@ function Navigation() {
         <NavItem>
           <NavLink href="/metrics">Metrics</NavLink>
         </NavItem>
-        { isLoggedIn ? <Logout checkLogin={checkLogin} /> : <Login checkLogin={checkLogin} /> }
+        { isLoggedIn
+          ? <Logout userImage={userImage} checkLogin={checkLogin} />
+          : <Login checkLogin={checkLogin} />}
       </Nav>
     </Navbar>
   );
