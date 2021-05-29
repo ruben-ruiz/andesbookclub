@@ -20,7 +20,7 @@ class SubmitQuestion extends React.Component {
     const data = [answerOne, answerTwo, answerThree, answerFour, correctAnswer, question, bookId];
     axios.post('/questions', data)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         toggle();
       });
   }

@@ -4,7 +4,6 @@ import axios from 'axios';
 function QuizView(props) {
   let { set, prev, next, list, answers, toggleQuiz } = props;
   const choices = [];
-  console.log(list);
   if (!Object.keys(set).length) {
     set = list[0];
     if (!set) {
@@ -28,7 +27,9 @@ function QuizView(props) {
     axios.post('/answers', {
       answers: Object.values(answers),
     })
-      .then((data) => console.log(data))
+      .then((data) => (data)
+      // console.log(data)
+      )
       .catch((err) => console.log(err));
       toggleQuiz(<></>);
   }}>
@@ -50,12 +51,16 @@ function QuizView(props) {
       axios.put(`/questions/update/upvote/${set.questionid}`, {
         upvote: vote,
       })
-        .then(data => console.log(data));
+        .then(data => (data)
+          // console.log(data)
+          );
     } else {
       axios.put(`/questions/update/downvote/${set.questionid}`, {
         downvote: vote,
       })
-        .then(data => console.log(data));
+        .then(data => (data)
+          // console.log(data)
+          );
     }
   }
 

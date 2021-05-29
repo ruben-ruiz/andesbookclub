@@ -10,14 +10,12 @@ function Login( { checkLogin, setUserImage }) {
   let history = useHistory();
 
   const onSuccess = (res) => {
-    console.log('[Login Success] currentUser:', res.profileObj);
     axios({
       method: 'POST',
       url: '/users/login',
       data: { tokenId: res.tokenId },
     }).then((res) => {
       checkLogin();
-      console.log('login response', res);
       history.push('/dashboard');
     }).catch((err) => {
       console.log(err);

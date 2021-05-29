@@ -16,7 +16,6 @@ setCompletedRouter.put('/:bookId', (req, res) => {
     WHERE userId = ${userId} AND bookId = '${bookId}'
   `)
     .then((dbRes) => {
-      console.log('end res: ', dbRes);
       res.status(200).send(dbRes);
     }).catch((err) => {
       console.log('end err: ', err);

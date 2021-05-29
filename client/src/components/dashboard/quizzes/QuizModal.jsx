@@ -41,7 +41,24 @@ function QuizModal({ bookid }) {
       .catch((err) => console.log(err));
   }, []);
 
-  const view = !start ? <button type="button" className="start-quiz question-vote-choice" onClick={e => changeStart(!start)}>start quiz</button> : <QuizView set={currentSet} prev={handlePrev} next={handleNext} list={questionSets} answers={answers} />;
+  const view = !start
+    ? (
+      <button
+        type="button"
+        className="start-quiz question-vote-choice"
+        onClick={e => changeStart(!start)}
+      >start quiz</button>
+    )
+    : (
+      <QuizView
+        set={currentSet}
+        prev={handlePrev}
+        next={handleNext}
+        list={questionSets}
+        answers={answers}
+        toggleQuiz={changeStart}
+      />
+    );
 
   return (
     <>

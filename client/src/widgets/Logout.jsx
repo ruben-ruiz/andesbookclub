@@ -14,7 +14,6 @@ function Logout({ checkLogin, userImage }) {
   const onSuccess = () => {
     axios.delete('/users/logout')
       .then((res) => {
-        console.log(res.data);
         return checkLogin();
       }).then(() => {
         history.push('/');

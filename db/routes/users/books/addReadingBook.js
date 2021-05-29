@@ -7,11 +7,9 @@ const addReadingBookRouter = express.Router();
 function insertBook(bookid, userId) {
   return bookApi(bookid)
     .then((apiRes) => {
-      console.log('apiRes data: ', apiRes.data);
       return bookData(apiRes.data, userId);
     })
     .then((dataObj) => {
-      console.log('dataObj: ', dataObj);
       const {
         userData, authorData, categData, bookCols, bookVals,
       } = dataObj;
@@ -72,10 +70,8 @@ function bookData(bookObj, userId) {
 addReadingBookRouter.post('/:bookId', (req, res) => {
   let bookId = req.params.bookId;
   let userId = req.session.userId;
-  console.log('userId, bookId ', userId, bookId);
   insertBook(bookId, userId)
     .then((dbRes) => {
-      console.log('end res: ', dbRes);
       res.status(200).send(dbRes);
     }).catch((err) => {
       console.log('end err: ', err);

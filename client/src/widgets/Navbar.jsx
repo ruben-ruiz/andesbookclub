@@ -12,7 +12,7 @@ import Login from './Login';
 import logo from '../assets/img/logo.png';
 
 function Navigation() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState('wait');
   const [userImage, setUserImage] = useState('');
 
   const checkLogin = () => (
@@ -25,7 +25,6 @@ function Navigation() {
           axios.get('/users/image')
             .then((res) => {
               const userImg = res.data[0] ? res.data[0].profilephoto : '';
-              console.log('image is:', userImg);
               setLoggedIn(loggedIn);
               setUserImage(userImg);
             });
@@ -54,9 +53,9 @@ function Navigation() {
         <NavItem>
           <NavLink
             onClick={() => (
-              !isLoggedIn ? alert('Please login first to see your dashboard 😊') : null
+              isLoggedIn !== true ? alert('Please login first to see your dashboard 😊') : null
             )}
-            href={isLoggedIn ? "/dashboard" : null}
+            href={ isLoggedIn === true ? "/dashboard" : null}
           >
             Dashboard
           </NavLink>
