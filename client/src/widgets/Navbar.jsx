@@ -52,7 +52,14 @@ function Navigation() {
           <NavLink href="/search">Search Books</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink href="/dashboard">Dashboard</NavLink>
+          <NavLink
+            onClick={() => (
+              !isLoggedIn ? alert('Please login first to see your dashboard 😊') : null
+            )}
+            href={isLoggedIn ? "/dashboard" : null}
+          >
+            Dashboard
+          </NavLink>
         </NavItem>
         <NavItem>
           <NavLink href="/metrics">Metrics</NavLink>
