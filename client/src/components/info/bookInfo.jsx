@@ -6,13 +6,12 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import parse from 'html-react-parser';
 import Info from './MainInfo';
-import QuestionsModal from './questionsSubmitModal';
-import BookStatus from '../widgets/BookStatus';
+import QuestionsModal from './questions/questionsSubmitModal';
+import BookStatus from '../../widgets/BookStatus';
 
 const bookInfo = (props) => {
   const [completedReading, setCompletedReading] = useState(false);
   const [book, setBook] = useState({});
-  const [showQuestions, setShowQuestions] = useState(false);
   const dataArr = [book.title, book.subtitle, book.author, book.thumbnail];
   let status;
   if (completedReading === 'available') {
@@ -20,18 +19,14 @@ const bookInfo = (props) => {
   } else {
     status = completedReading ? 'Completed' : 'Reading';
   }
-  console.log('props bookid: ', props.match.params.bookid);
 
   useEffect(() => {
-    console.log('this is the useEffect');
     axios({
       method: 'get',
       url: `https://www.googleapis.com/books/v1/volumes/${props.match.params.bookid}`,
     })
       .then((response) => {
-      // console.log('this is the response: ', response.data.volumeInfo);
         const data = response.data.volumeInfo;
-        console.log('data inside axios get: ', data);
         const bookObj = {
           title: data.title,
           subtitle: data.subtitle,
@@ -44,8 +39,6 @@ const bookInfo = (props) => {
           thumbnail: data.imageLinks.thumbnail,
           bookId: response.data.id,
         };
-        console.log('this is the bookObj: ', bookObj);
-        console.log('this is the book state: ', book);
         setBook(bookObj);
         return response.data.id;
       })
