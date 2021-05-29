@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Book from './Book';
-import Carousel from '../widgets/Carousel';
+import React from 'react';
+import Book from '../../../widgets/Book';
+import Carousel from '../../../widgets/Carousel';
 
-const ReadingList = ({ readingBooks, getBooks, books }) => (
+const ReadingList = ({ readingBooks, getBooks }) => (
   <div className="reading-list">
     <h2>Currently Reading</h2>
     {readingBooks.length > 0

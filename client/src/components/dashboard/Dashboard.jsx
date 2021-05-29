@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import QuizzesList from './QuizzesList';
-import ReadingList from './ReadingList';
-import LineGraph from '../LineGraph';
-import CompletedList from './CompletedList';
-import QuizModal from './QuizModal';
+import QuizzesList from './quizzes/QuizzesList';
+import ReadingList from './reading/ReadingList';
+import LineGraph from '../metrics/LineGraph';
+import CompletedList from './completed/CompletedList';
+import QuizModal from './quizzes/QuizModal';
 
 const Dashboard = () => {
   const [books, updateBooks] = useState([]);

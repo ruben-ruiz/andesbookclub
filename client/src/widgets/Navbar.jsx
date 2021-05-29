@@ -6,21 +6,13 @@ import {
   Nav,
   NavItem,
   NavLink,
-  InputGroup,
-  InputGroupAddon,
-  Input,
-  Form,
-  FormGroup,
-  Button,
 } from 'reactstrap';
-import Search from '../Search';
-import Logout from '../Logout.jsx';
-import Login from '../Login';
+import Logout from './Logout';
+import Login from './Login';
 import logo from '../assets/img/logo.png';
 
 function Navigation() {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [search, setSearch] = useState('');
 
   const checkLogin = () => {
     axios.get('/isLoggedIn')
@@ -34,27 +26,12 @@ function Navigation() {
     checkLogin();
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('book search result', search);
-  };
-
   return (
     <Navbar expand="md">
       <div className="company">
         <img className="logo" src={logo} alt="mountain-logo" />
         <NavbarBrand href="/" className="navbar-general-brand">Ande&apos;s Bookclub</NavbarBrand>
       </div>
-      {/* <Form onSubmit={(e) => handleSubmit(e)}>
-        <FormGroup>
-          <InputGroup>
-            <Input href="/search" type="text" placeholder="Search books..." name="search" onChange={(e) => setSearch(e.target.value)} />
-            <InputGroupAddon addonType="append">
-              <Button href="/search" type="submit">Search</Button>
-            </InputGroupAddon>
-          </InputGroup>
-        </FormGroup>
-      </Form> */}
       <Nav>
         <NavItem>
           <NavLink href="/search">Search Books</NavLink>

@@ -2,9 +2,8 @@ import React from 'react';
 import {
   Card, CardImg, Button,
 } from 'reactstrap';
-// import quizImg from '../assets/img/quiz.png';
 
-const Quiz = ({ index, quiz, toggleQuiz }) => (
+const Quiz = ({ quiz, toggleQuiz }) => (
   <>
     <Card>
       <CardImg top width="100%" src={quiz.thumbnail} alt="Card image cap" />
