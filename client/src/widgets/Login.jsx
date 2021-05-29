@@ -6,7 +6,7 @@ import { refreshTokenSetup } from '../util/refreshToken';
 
 const clientId = '679046458711-521g8lfg0gq7gqrlubug21l6ekdbiank.apps.googleusercontent.com';
 
-function Login( { checkLogin }) {
+function Login( { checkLogin, setUserImage }) {
   let history = useHistory();
 
   const onSuccess = (res) => {
