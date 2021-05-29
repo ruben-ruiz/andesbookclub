@@ -53,7 +53,7 @@
   /* CARDS */
   .card {
     height: 100%;
-    width: 17%;
+    width: 24%;
     flex-shrink: 0;
     margin-right: 1.5rem;
     cursor: pointer;

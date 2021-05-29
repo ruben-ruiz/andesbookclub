@@ -201,9 +201,7 @@ a {
 
 .cm-rankNum {
   font-weight: bolder;
-  color: grey;
   left: 40px
-
 }
 
 .cm-top-username {
@@ -302,6 +300,8 @@ a {
 
 .dashboard {
   padding: 5%;
+  padding-left: 13%;
+  padding-right: 13%;
 }
 
 .line-graph {
