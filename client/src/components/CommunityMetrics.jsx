@@ -82,7 +82,7 @@ class CommunityMetrics extends React.Component {
       this.setState({
         users: responses[0].data,
         questions: responses[1].data,
-        userStats: [Number(responses[2].data[0].count), 0, 0, 'N/A', Number(responses[3].data[0].count), responses[4].data[0].questionbody]
+        userStats: [Number(responses[2].data[0].count), 0, 0, 'N/A', Number(responses[3].data[0].count), responses[4].data[0] ? responses[4].data[0].questionbody : 'No questions contributed'],
       });
     }).catch((err) => {
       console.log(err);
