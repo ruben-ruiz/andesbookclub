@@ -8,9 +8,9 @@
   box-sizing: inherit;
 }
 
-/* html {
+html {
   font-size: 62.5%;
-} */
+}
 
 body {
   box-sizing: border-box;
@@ -281,7 +281,7 @@ a {
 
 .hook-img {
   align-self: center;
-  height: 600px;
+  height: 40rem;
 }
 
 .about-phrase,

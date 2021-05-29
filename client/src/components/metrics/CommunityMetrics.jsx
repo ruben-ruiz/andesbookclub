@@ -3,8 +3,6 @@ import axios from 'axios';
 import TopRatedQuestions from './TopRatedQuestions';
 import TopRatedUsers from './TopRatedUsers';
 import UserStats from './UserStats';
-// import fakeUsers from '../../fakeUsers.json'
-// import fakeQuestions from '../../fakeQuestions.json'
 
 class CommunityMetrics extends React.Component {
   constructor(props) {
@@ -12,7 +10,7 @@ class CommunityMetrics extends React.Component {
     this.state = {
       users: [],
       questions: [],
-      userStats: [0, 0, 0, 'N/A', 0, 'N/A']
+      userStats: [0, 0, 0, 'N/A', 0, 'N/A'],
     };
 
     this.getUsers = this.getUsers.bind(this);
@@ -25,9 +23,6 @@ class CommunityMetrics extends React.Component {
 
   componentDidMount() {
     this.getData();
-    console.log('users', this.state.users);
-    console.log('questions', this.state.questions);
-
   }
 
   getUsers() {

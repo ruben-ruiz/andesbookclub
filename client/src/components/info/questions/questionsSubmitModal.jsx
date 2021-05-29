@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Button, Modal, ModalHeader, ModalBody, ModalFooter,
+  Button, Modal, ModalHeader, ModalBody,
 } from 'reactstrap';
 import SubmitQuestion from './SubmitQuestion';
 

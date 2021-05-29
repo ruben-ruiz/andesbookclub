@@ -1,13 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  Card, CardImg,
-} from 'reactstrap';
-import axios from 'axios';
-import BookStatus from '../widgets/BookStatus';
+import { Card, CardImg } from 'reactstrap';
+import BookStatus from './BookStatus';
 
 const Book = ({
-  book, index, getBooks, books, status,
+  book, getBooks, status,
 }) => {
   const history = useHistory();
 

@@ -6,11 +6,9 @@ import {
   Nav,
   NavItem,
   NavLink,
-  Dropdown,
 } from 'reactstrap';
-import Search from '../Search';
-import Logout from '../Logout.jsx';
-import Login from '../Login';
+import Logout from './Logout';
+import Login from './Login';
 import logo from '../assets/img/logo.png';
 
 function Navigation() {
@@ -42,11 +40,6 @@ function Navigation() {
   useEffect(() => {
     checkLogin();
   }, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('book search result', search);
-  };
 
   return (
     <Navbar expand="md">
