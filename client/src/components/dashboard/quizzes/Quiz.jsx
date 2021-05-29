@@ -18,7 +18,6 @@ const Quiz = ({ quiz, toggleQuiz }) => (
       </Button>
     </Card>
   </>
-
 );
 
 export default Quiz;
