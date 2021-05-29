@@ -11,7 +11,6 @@ const Dashboard = () => {
   const [quizzes, updateQuizzes] = useState([]);
   const [modal, toggleModal] = useState(<></>);
 
-
   const getQuizzes = () => {
     axios.get('/users/quizzes')
     .then((res) => {
@@ -25,7 +24,7 @@ const Dashboard = () => {
     axios.get('/users/books')
       .then((res) => {
         updateBooks(res.data);
-        getQuizes();
+        getQuizzes();
       }).catch((err) => {
         console.log('error: ', err);
       });
