@@ -36,7 +36,7 @@ const LineGraph = () => {
 
   return (
     <div className="line-graph">
-      <h2>Line Graph</h2>
+      <div id="dashboard-head">Your Progress</div>
       <Line data={data} options={options} />
     </div>
   );
