@@ -36,7 +36,7 @@
 }
 
 .search-fields button:hover {
-  background-color: yellow;
+  color: rgb(255, 217, 0);
   color: black;
 }
 
@@ -62,7 +62,7 @@
 
 .nav-link:hover {
   font-size: 1.5rem;
-  color: yellow;
+  color: rgb(255, 217, 0);
 }
 
 /* LANDING CONTENT */
@@ -94,7 +94,7 @@
 }
 
 .hook-btn {
-  background-color: yellow;
+  color: rgb(255, 217, 0);
   color: black;
   width: 120px;
   height: 50px;
@@ -104,7 +104,7 @@
 
 .hook-img {
   align-self: center;
-  height: 600px;
+  height: 40rem;
 }
 
 .about-phrase,
@@ -116,7 +116,7 @@
 }
 
 .about-img {
-  width: 30%;
+  height: 40rem;
 }
 
 .mission {
@@ -125,19 +125,21 @@
 
 .mission-img {
   align-self: center;
-  width: 30%;
-  height: 80%;
+  height: 35rem;
 }
 
 .footer {
   height: 200px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
+  background-color: rgb(247, 247, 247);
+  color:black;
 }
 
 .footer-contact {
-  margin-right: 37%;
+  margin-left: 3%;
+
 }
 
 .footer-social {
@@ -146,6 +148,7 @@
   margin-right: 20px;
   justify-self: right;
 }
+
 
 .footer-social>* {
   margin: 0 10px;

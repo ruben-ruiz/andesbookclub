@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Book from './Book';
-import Carousel from '../widgets/Carousel';
+import React from 'react';
+import Book from '../../../widgets/Book';
+import Carousel from '../../../widgets/Carousel';
 
-const CompletedList = ({ completedBooks, getBooks, books }) => (
+const CompletedList = ({ completedBooks, getBooks }) => (
   <div className="completed-list">
-    <h2>Completed Reading</h2>
+    <div id="dashboard-head">Completed Reading</div>
     {completedBooks.length > 0
       ? (
         <Carousel className="completed-section">

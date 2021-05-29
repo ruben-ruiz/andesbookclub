@@ -1,12 +1,12 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Dashboard from './components/Dashboard';
-import Search from './Search';
-import Landing from './components/Landing';
-import CommunityMetrics from './components/CommunityMetrics';
-import Navbar from './components/Navbar';
-// import Footer from './components/Footer';
-import BookInfo from './components/bookInfo';
+import Dashboard from './components/dashboard/Dashboard';
+import Search from './components/search/Search';
+import Landing from './components/landing/Landing';
+import CommunityMetrics from './components/metrics/CommunityMetrics';
+import Navbar from './widgets/Navbar';
+import Footer from './widgets/Footer';
+import BookInfo from './components/info/bookInfo';
 
 const App = () => (
   <>
@@ -26,6 +26,7 @@ const App = () => (
         <Landing />
       </Route>
     </Switch>
+    <Footer />
   </>
 );
 

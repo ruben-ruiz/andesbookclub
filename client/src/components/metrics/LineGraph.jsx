@@ -1,7 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 
-const LineGraph = (props) => {
+const LineGraph = () => {
   const data = {
     labels: ['Start', '', '', '', 'Now'],
     datasets: [
@@ -36,7 +36,7 @@ const LineGraph = (props) => {
 
   return (
     <div className="line-graph">
-      <h2>Line Graph</h2>
+      <div id="dashboard-head">Your Progress</div>
       <Line data={data} options={options} />
     </div>
   );

@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import QuizzesList from './QuizzesList';
-import ReadingList from './ReadingList';
-import LineGraph from '../LineGraph';
-import CompletedList from './CompletedList';
-import QuizModal from './QuizModal';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import QuizzesList from './quizzes/QuizzesList';
+import ReadingList from './reading/ReadingList';
+import LineGraph from '../metrics/LineGraph';
+import CompletedList from './completed/CompletedList';
+import QuizModal from './quizzes/QuizModal';
 
 const Dashboard = () => {
   const [books, updateBooks] = useState([]);
   const [quizzes, updateQuizzes] = useState([]);
-  const [modal, toggleModal] = useState(<></>);
+  // const [modal, toggleModal] = useState(<></>);
+  const [modal, setModal] = useState(false);
+  const [quiz, setQuiz] = useState(null);
+
+  const toggleModal = () => setModal(!modal);
 
   const getQuizzes = () => {
     axios.get('/users/quizzes')
@@ -29,12 +34,11 @@ const Dashboard = () => {
         console.log('error: ', err);
       });
   };
-  function closeQuiz(jsx) {
-    toggleModal(jsx);
-  }
 
   function toggleQuiz(bookid) {
-    toggleModal(<QuizModal bookId={bookid} toggleQuiz={closeQuiz} />);
+    // toggleModal(<QuizModal bookId={bookid} toggleQuiz={closeQuiz} />);
+    setQuiz(bookid);
+    toggleModal();
   }
 
   useEffect(() => {
@@ -45,7 +49,15 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <QuizzesList quizzes={quizzes} toggleQuiz={toggleQuiz} />
-      {modal}
+      <Modal isOpen={modal} toggleModal={toggleModal}>
+        <ModalHeader toggleModal={toggleModal}>Exam</ModalHeader>
+        <ModalBody>
+          <QuizModal bookid={quiz} />
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={toggleModal}>Cancel Quiz</Button>
+        </ModalFooter>
+      </Modal>
       <LineGraph />
       <ReadingList
         getBooks={getBooks}
