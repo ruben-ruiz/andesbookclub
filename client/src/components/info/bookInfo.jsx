@@ -51,9 +51,11 @@ const bookInfo = (props) => {
   }, [props.match.params.bookid]);
 
   return (
-    <div>
-      <Info data={dataArr} />
-      <BookStatus book={book} status={status} setCompletedReading={setCompletedReading} />
+    <div className="info-container">
+      <div className="main-info">
+        <Info data={dataArr} />
+        <BookStatus book={book} status={status} setCompletedReading={setCompletedReading} />
+      </div>
       <ListGroup>
         <ListGroupItem>
           Publish Date:
@@ -75,7 +77,9 @@ const bookInfo = (props) => {
       <div>
         {book.description ? parse(book.description) : null}
       </div>
-      <QuestionsModal modalOrAlert={completedReading} bookId={book.bookId} />
+      <div className="info-outer-container">
+        <QuestionsModal modalOrAlert={completedReading} bookId={book.bookId} />
+      </div>
     </div>
   );
 };
