@@ -317,3 +317,32 @@ a {
   height: 100vh;
   overflow: hidden;
 } */
+
+/* book info */
+/* ========================== */
+.info-container {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.info-outer-container {
+  width: 40%;
+  height: 40%;
+  margin: auto;
+  text-align: center;
+}
+
+.main-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.main-info-vert {
+  padding-left: 5rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+/* .book-status {
+} */
