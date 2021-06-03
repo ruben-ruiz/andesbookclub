@@ -103,7 +103,7 @@ a {
 /* ================= */
 /* Questions and Answers Modals */
 /* ========================== */
-/*
+
 .popup {
   justify-content: center;
   z-index: 15;
@@ -204,4 +204,4 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-} */
+}

@@ -10,11 +10,10 @@ import QuizModal from './quizzes/QuizModal';
 const Dashboard = () => {
   const [books, updateBooks] = useState([]);
   const [quizzes, updateQuizzes] = useState([]);
-  // const [modal, toggleModal] = useState(<></>);
   const [modal, setModal] = useState(false);
   const [quiz, setQuiz] = useState(null);
 
-  const toggleModal = () => setModal(!modal);
+  const toggle = () => setModal(!modal);
 
   const getQuizzes = () => {
     axios.get('/users/quizzes')
@@ -36,9 +35,8 @@ const Dashboard = () => {
   };
 
   function toggleQuiz(bookid) {
-    // toggleModal(<QuizModal bookId={bookid} toggleQuiz={closeQuiz} />);
     setQuiz(bookid);
-    toggleModal();
+    toggle();
   }
 
   useEffect(() => {
@@ -49,13 +47,13 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <QuizzesList quizzes={quizzes} toggleQuiz={toggleQuiz} />
-      <Modal isOpen={modal} toggleModal={toggleModal}>
-        <ModalHeader toggleModal={toggleModal}>Exam</ModalHeader>
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalHeader toggle={toggle}>Exam</ModalHeader>
         <ModalBody>
           <QuizModal bookid={quiz} />
         </ModalBody>
         <ModalFooter>
-          <Button color="secondary" onClick={toggleModal}>Cancel Quiz</Button>
+          <Button color="secondary" onClick={toggle}>Cancel Quiz</Button>
         </ModalFooter>
       </Modal>
       <LineGraph />
