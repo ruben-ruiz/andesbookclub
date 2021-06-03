@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import { refreshTokenSetup } from '../util/refreshToken';
 
-const clientId = '679046458711-521g8lfg0gq7gqrlubug21l6ekdbiank.apps.googleusercontent.com';
+const clientId = '836968365888-6tdvb8sji32an3pf99uds3v88p1g47sm.apps.googleusercontent.com';
 
 function Login( { checkLogin, setUserImage }) {
   let history = useHistory();
