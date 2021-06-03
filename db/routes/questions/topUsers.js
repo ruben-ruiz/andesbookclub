@@ -11,7 +11,11 @@ questionsTopUsersRouter.get('/', (req, res) => {
   GROUP BY users.userId
   ORDER BY sum DESC
   LIMIT 5;`)
-  .then(data => {res.send(data.rows)})
+    .then((data) => {
+      res.status(200).send(data.rows);
+    }).catch((err) => {
+      res.status(500).send(err);
+    });
 });
 
 module.exports = questionsTopUsersRouter;
