@@ -1,6 +1,9 @@
 {
   "name": "blue-ocean",
   "version": "1.0.0",
+  "engines": {
+    "node": "14.16.0"
+  },
   "description": "Andes Book Club",
   "main": "server.js",
   "scripts": {
