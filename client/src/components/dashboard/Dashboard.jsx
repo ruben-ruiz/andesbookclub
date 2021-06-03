@@ -44,7 +44,6 @@ const Dashboard = () => {
   };
 
   function toggleQuiz(bookid) {
-    // toggle(<QuizModal bookId={bookid} toggleQuiz={closeQuiz} />);
     setQuiz(bookid);
     toggle();
   }
