@@ -4,7 +4,7 @@ const { Pool } = require('pg');
 
 const pool = new Pool({
   user: process.env.PGUSER,
-  password: process.env.PGPASS,
+  // password: process.env.PGPASS,
   host: process.env.PGHOST,
   database: process.env.PGDB,
   port: process.env.PGPORT,
