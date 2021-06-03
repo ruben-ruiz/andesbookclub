@@ -25,7 +25,6 @@ function getUserQuizzes(req) {
 userQuizzesRouter.get('/', (req, res) => {
   getUserQuizzes(req)
     .then((dbRes) => {
-      console.log(dbRes);
       res.status(200).send(dbRes.rows);
     })
     .catch((err) => {

@@ -5,7 +5,6 @@ const db = require('../../index');
 const userStatsRouter = express.Router();
 
 userStatsRouter.get('/', (req, res) => {
-  console.log(req.session.userId)
   var responseObj = {}
 
     db.query(`select count(CASE WHEN userBooks.isCompleted THEN 1 END) from userBooks where userId = ${req.session.userId}`)

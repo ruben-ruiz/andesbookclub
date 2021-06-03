@@ -11,7 +11,6 @@ const BookStatus = ({ className, getBooks = () => { }, book, status, setComplete
   const deleteBook = (book) => {
     axios.delete(`/users/books/remove/${book.bookId}`)
       .then((res) => {
-        console.log('book deleted', res);
         getBooks();
       }).catch((err) => {
         console.log('error deleting book from userbooks', err);
@@ -43,7 +42,6 @@ const BookStatus = ({ className, getBooks = () => { }, book, status, setComplete
       } else if (val === 'Reading') {
         axios.put(`/users/books/setReading/${book.bookId}`)
           .then((res) => {
-            console.log('book added to reading list', res.data);
             setCompletedReading(false);
             getBooks();
           })
@@ -53,7 +51,6 @@ const BookStatus = ({ className, getBooks = () => { }, book, status, setComplete
       } else if (val === 'Completed') {
         axios.put(`/users/books/setCompleted/${book.bookId}`)
           .then((res) => {
-            console.log('book added to completed list', res.data);
             setCompletedReading(true);
             getBooks();
           })
@@ -63,7 +60,6 @@ const BookStatus = ({ className, getBooks = () => { }, book, status, setComplete
       }
     }
   };
-  console.log('status: ', status);
 
   return (
     <div className="book-status">

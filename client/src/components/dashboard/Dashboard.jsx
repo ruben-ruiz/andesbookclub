@@ -17,19 +17,28 @@ const Dashboard = () => {
 
   const getQuizzes = () => {
     axios.get('/users/quizzes')
-    .then((res) => {
-      updateQuizzes(res.data);
-    }).catch((err) => {
-      console.log('error: ', err);
-    });
+      .then((res) => {
+        updateQuizzes(res.data);
+      }).catch((err) => {
+        console.log('error: ', err);
+      });
   };
 
   const getBooks = () => {
-    axios.get('/users/books')
-      .then((res) => {
-        updateBooks(res.data);
-        getQuizzes();
-      }).catch((err) => {
+    axios.get('/isLoggedIn')
+      .then((res) => (
+        res.data
+      )).then((loggedIn) => {
+        if (loggedIn) {
+          return axios.get('/users/books')
+            .then((res) => {
+              updateBooks(res.data);
+              getQuizzes();
+            });
+        }
+        return loggedIn;
+      })
+      .catch((err) => {
         console.log('error: ', err);
       });
   };

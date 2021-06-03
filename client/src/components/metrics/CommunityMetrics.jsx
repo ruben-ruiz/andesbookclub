@@ -87,7 +87,7 @@ class CommunityMetrics extends React.Component {
       this.getQuestions(),
       this.getUserInfo(),
     ]).then((responses) => {
-      console.log('responses', responses);
+      // console.log('responses', responses);
       this.setState({
         users: responses[0].data,
         questions: responses[1].data,

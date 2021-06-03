@@ -20,18 +20,6 @@ app.use(session({
   saveUninitialized: true,
 }));
 
-// app.get('/click', (req, res) => {
-//   if (req.session.page_views) {
-//     req.session.page_views++;
-//     console.log(req.session);
-//     res.send('You visited this page ' + req.session.page_views + ' times' + req.session.userId);
-//   } else {
-//     req.session.page_views = 1;
-//     res.send('Welcome to this page for the first time!');
-//   }
-// });
-// logged in
-
 app.get('/isLoggedIn', (req, res) => {
   if (req.session.userId === undefined) {
     res.status(200).send(false);
