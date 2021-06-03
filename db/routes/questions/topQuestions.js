@@ -10,7 +10,11 @@ questionsTopQuestionsRouter.get('/', (req, res) => {
   JOIN users ON questions.createdBy = users.userId
   ORDER BY upvotes DESC
   LIMIT 5;`)
-  .then(data => {res.send(data.rows)})
-})
+    .then((data) => {
+      res.status(200).send(data.rows);
+    }).catch((err) => {
+      res.status(500).send(err);
+    });
+});
 
 module.exports = questionsTopQuestionsRouter
