@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-const clientId = '679046458711-521g8lfg0gq7gqrlubug21l6ekdbiank.apps.googleusercontent.com';
+const clientId = '836968365888-6tdvb8sji32an3pf99uds3v88p1g47sm.apps.googleusercontent.com';
 
 function Logout({ checkLogin, userImage }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
