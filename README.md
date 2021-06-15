@@ -30,7 +30,7 @@ Andes Book Club offers to provide a community of book lovers a platform to help 
 
 **Book Info**
 
-![info](https://imgur.com/X1DQZJs.jpg)
+![info](https://imgur.com/E4v2Tdz.jpg)
 
 **User Question Submission**
 
